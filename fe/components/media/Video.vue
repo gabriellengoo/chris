@@ -1,5 +1,8 @@
 <!-- :src="`https://stream.mux.com/${this.id}-low.m3u8`"   :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?`" 
-    :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?time=15`"-->
+    :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?time=15`"
+  :autoplay="mobile"
+    muted 
+-->
 <template>
   <video 
     ref="video"
@@ -7,8 +10,9 @@
     @mouseleave="pause"
     loop
     playsinline
-    :autoplay="mobile"
-    :src="`https://stream.mux.com/${this.id}.m3u8?max_resolution=720p`"
+    muted 
+    autoplay
+    :src="`https://stream.mux.com/${this.id}.m3u8`"
   ></video>
 
 </template>

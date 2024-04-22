@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'CHISARA AGOR',
     htmlAttrs: {
       lang: 'en'
     },
@@ -60,26 +60,25 @@ export default {
 
   sanity: {
     // module options
-    projectId: 'bs1njhuq',
+    projectId: 'rxcle18h',
     apiVersion: '2023-09-05',
     useCdn: false, 
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // loaders: {
-    //   sass: {
-    //     implementation: require('sass'),
-    //   },
-    //   scss: {
-    //     implementation: require('sass'),
-    //   },
-    // },
-    extend(config, { isDev, isClient }) {
-      // Check if the IGNORE_BUILD_ERRORS environment variable is set to true
-      if (process.env.IGNORE_BUILD_ERRORS === 'true') {
-        // Skip some build steps or perform custom logic here
-      }
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules\/@studio-freight\/lenis/,
+        type: 'javascript/auto',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      });
     },
     postcss: {
       postcssOptions: {
@@ -93,7 +92,7 @@ export default {
 
   image: {
     sanity: {
-      projectId: 'bs1njhuq',
+      projectId: 'rxcle18h',
       dataset: 'production',
       useCdn: false, 
     },

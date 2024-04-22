@@ -162,7 +162,7 @@ export default {
 
       this.scrollInterval = setInterval(() => {
         const scrollContainer = this.$refs.scrollContainer;
-        scrollContainer.scrollTop += 1; // Scroll down by 1 pixel
+        scrollContainer.scrollTop += 1.5; // Scroll down by 1 pixel
       }, intervalDuration);
     },
 

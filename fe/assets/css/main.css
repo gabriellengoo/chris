@@ -19,7 +19,9 @@ body,
 html {
   height: auto;
   min-height: 100vh !important;
-  background: #f7f7f7;
+  background: #f3f3f7;
+  /* background: black;
+  color: white; */
   /* overflow: hidden; */
   overflow-x: hidden;
   /* cursor: crosshair; */
@@ -28,6 +30,9 @@ html {
 }
 
 
+.homeimgsize img {
+ scale: .3;
+}
 
 
 a{

@@ -6,9 +6,9 @@ import {muxInput} from 'sanity-plugin-mux-input'
 
 export default defineConfig({
   name: 'default',
-  title: 'studio',
+  title: 'studiochrisara',
 
-  projectId: 'bs1njhuq',
+  projectId: 'rxcle18h',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool(), muxInput()],

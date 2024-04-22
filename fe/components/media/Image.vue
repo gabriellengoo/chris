@@ -15,12 +15,10 @@
 </template>
 
 <script>
-import ImagePlaceholder from '~/components/ImagePlaceholder.vue';
 
 export default {
   props: ['src', 'crop', 'hotspot', 'aspect', 'sizes', 'size'],
   components: {
-    ImagePlaceholder,
     // ... other components
   },
   data() {
