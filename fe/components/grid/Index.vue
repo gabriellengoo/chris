@@ -4,7 +4,7 @@
     <div class="">
       <div class=" overflow-x-hidden h-[100vh] " ref="scrollContainer" @scroll="handleScroll">
         <div v-for="item in items"  :key="item._key" class="">
-        <figure class=" p-10 ">
+        <figure class="  w-[50vw] ">
           <NuxtLink
             v-if="item.reference.slug"
             :to="`/work/${item.reference.slug}`"
@@ -15,6 +15,7 @@
                 <MediaImage
                   :src="item.image.image"
                   v-if="item.image.image"
+                  class=""
                 ></MediaImage>
                 <MediaVideo
                   :id="item.video.id"

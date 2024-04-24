@@ -22,24 +22,18 @@
               :to="`/work/${item.reference.slug}`"
             >
               <span>
-                <figure>
+                <figure class=" p-10 w-[50vw] h-[50vw]">
                   <MediaImage
                     :size="item.image.size"
                     :aspect="item.image.aspect"
-                    :style="{
-   
-                          height: `100vh`,
-                        }"
+                
                     :src="item.image.image"
                     v-if="item.image.image"
                   ></MediaImage>
                   <MediaVideo
                   class="vidsize"
                     :id="item.video.id"
-                    :style="{
-   
-   height: `100vh`,
- }"
+
                     v-if="item.video.id"
                   ></MediaVideo>
                                <!-- Render YouTube Video -->
@@ -71,18 +65,14 @@
                 <MediaImage
                   :size="item.image.size"
                   :aspect="item.image.aspect"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+                 
                   :src="item.image.image"
                   v-if="item.image.image"
                 ></MediaImage>
                 <MediaVideo
                 class="vidsize"
                   :id="item.video.id"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+                  
                   v-if="item.video.id"
                 ></MediaVideo>
                              <!-- Render YouTube Video -->
@@ -114,18 +104,14 @@
                 <MediaImage
                   :size="item.image.size"
                   :aspect="item.image.aspect"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+                  
                   :src="item.image.image"
                   v-if="item.image.image"
                 ></MediaImage>
                 <MediaVideo
                   :id="item.video.id"
                   class="vidsize"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+               
                   v-if="item.video.id"
                 ></MediaVideo>
                              <!-- Render YouTube Video -->

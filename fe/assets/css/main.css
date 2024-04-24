@@ -20,6 +20,8 @@ html {
   height: auto;
   min-height: 100vh !important;
   background: #f3f3f7;
+  background: #131211;
+  color: white; 
   /* background: black;
   color: white; */
   /* overflow: hidden; */
@@ -32,6 +34,12 @@ html {
 
 .homeimgsize img {
  scale: .3;
+}
+
+
+.contactinner p a{
+  border: 1px solid white;
+  padding: .5rem;
 }
 
 

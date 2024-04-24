@@ -1,79 +1,37 @@
 <template>
   <!-- bg-white -->
   <header
-    class=" absolute top-0 left-0 w-full   text-xs leading-snug uppercase   "
+    class=" absolute top-0 w-3/6  pb-10  leading-snug uppercase   "
   >
   <!-- justify-center fixed border-b-2 border-black pt-8 -->
     <div
-      class=" mobilemenu headbg flex flex-wrap w-full items-center gap-4 p-2 md:pb-2 md:pt-2 md:flex-nowrap"
+      class=" mobilemenu headbg flex justify-center flex-wrap  items-center gap-4 p-2 md:pb-2 md:pt-2 md:flex-nowrap"
     >
     <!-- <Animation></Animation> -->
     <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
-    <NuxtLink
+    <!-- <NuxtLink
           to="/"
           class="headtop titleText flex justify-between items-center text-9xl align-baseline text-center uppercase"
-          @touchstart="startAnimation"
-          @touchend="endAnimation"
+     
         >
-          <span class="animate-hover" :class="{ 'touch-hover': touchHover }">C </span
-          ><span class="hover-move" :class="{ 'touch-move': touchMove }">Rose.co</span>
-        </NuxtLink>
+        CHISARA AGOR
+        </NuxtLink> -->
   
 
         
 
 
-  <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
+  <nav class="headtoplinks w-[45vw] linktextmb text-[2rem] justify-between flex">
+    <NuxtLink to="/" class="header-link">Home</NuxtLink>
         <NuxtLink to="/works">Work</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#contact' }" class="header-link">Contact</NuxtLink>
+        <NuxtLink to="/poetry" >Poetry</NuxtLink>
       </nav>
-
-      <SearchBar />
-
-      <!-- <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
-        <NuxtLink to="/works">Work</NuxtLink>
-        <NuxtLink to="scripted-casting.vercel.app/#about" >About</NuxtLink>
-        <NuxtLink to="./#contact" class="header-link">Contact</NuxtLink>
-      </nav> -->
-
-   
 
       <!-- <SearchBar /> -->
 
-
-      <!-- <div class="flex-col hidden normal-case md:flex">
-        <div class="flex" v-for="item in contact" :key="item._key">
-          <span class="block w-24 uppercase">{{ item.title }}</span>
-          <span class="block">
-            <a :href="item.link.link" v-if="item.link.link">{{
-              item.link.title
-            }}</a>
-            <span v-else>{{ item.link.title }}</span>
-          </span>
-        </div>
-      </div> -->
-      <!-- <button
-        class="absolute bottom-0 right-0 w-6 h-4 md:hidden"
-        @click="TOGGLE_MENU()"
-      >
-        <span
-          class="absolute top-0 left-0 w-full transform bg-black h-2px"
-          :class="menu ? 'rotate-45 mt-1.5 ' : ''"
-        ></span>
-        <span
-          class="absolute top-0 left-0 w-full mt-1.5 bg-black h-2px"
-          :class="menu ? 'opacity-0' : ''"
-        ></span>
-        <span
-          class="absolute left-0 w-full mb-0.5 bg-black h-2px transform"
-          :class="menu ? '-rotate-45 mt-1.5 top-0' : 'bottom-0'"
-        ></span>
-      </button> -->
+     
     </div>
-    <!-- <div class="fixed top-0 left-[60vw] w-1/6 z-20">
-      <SearchBar />
-    </div> -->
+   
 
     <LayoutMenu v-if="menu"></LayoutMenu>
   </header>
@@ -143,13 +101,19 @@ export default {
 
 /* white */
 .headbg{
- background-color: white;
+ /* background: #f3f3f7; */
 }
 
-
+.headtoplinks{
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
 
 .titleText {
-  font-family: 'GTWalsheimb';
+  /* font-family: 'AtlasGrotesk', sans-serif; */
+  font-size: 15rem;
+  /* line-height: 7.5rem; */
 }
 
 .animate-hover {

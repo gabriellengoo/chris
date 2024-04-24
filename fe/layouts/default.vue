@@ -4,7 +4,7 @@
     <!-- <TransitionComponent /> -->
     
     <Nuxt />
-    <!-- <LayoutHeader
+    <LayoutHeader
       :class="
         $nuxt.$route.name == 'index' ||
         $nuxt.$route.name == 'index-bak' ||
@@ -14,7 +14,7 @@
           ? ''
           : ' md:flex'
       "
-    ></LayoutHeader> -->
+    ></LayoutHeader>
  
     <!-- <LayoutHeaderMin
       :class="

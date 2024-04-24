@@ -38,7 +38,7 @@ export default {
           // },
           internalLink: InternalLink,
           phoneLink: PhoneLink,
-          strong: ({ children }) => <strong style="font-family: 'GTWalsheimbb';">{children}</strong>,
+          strong: ({ children }) => <strong>{children}</strong>,
         },
       },
     }

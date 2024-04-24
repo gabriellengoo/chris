@@ -3,8 +3,6 @@
   <div class="pt-28 md:pt-0">
     <!-- <LenisComponent />  to="#about" -->
     <div class="w-screen h-screen overflow-hidden flex justify-center">
-     
-      
       <!-- about text -->
       <div>
         <!-- md:pb-5 sm:pb-5  -->
@@ -15,54 +13,156 @@
             v-for="section in home.sections"
             :key="section._key"
           >
-            <div class="pt-[10vw] flex flex-col items-center text-center pb-[5vw]  p-20" v-if="section.title">
+            <div
+              class="flex flex-col items-center pb-[5vw] p-20"
+              v-if="section.title"
+            >
               <!-- text-[1.5rem] leading-[1.5rem] -->
 
-              <p class="abouttitletexta font-extrabold ">
+              <!-- <p class="abouttitletexta text-center font-extrabold ">
                 {{ section.title }}
-              </p>
+              </p> -->
 
-              <div
-                class="md:flex flex-col pt-[2vw] md:justify-between "
-              >
-                <div
-                v-if="section.image.image" class="md:pt-0 md:pb-20 abouttitle flex  md:justify-end text-5xl md:text-6xl"
-                >
-                  <div
-                    class="contactimagemobilecont  h-fit flex justify-end"
+              <!-- about text -->
+              <div class="md:flex flex-col p-10 md:justify-between">
+                <!-- <div  class="md:pt-0 md:pb-20 abouttitle flex md:justify-center text-5xl md:text-6xl">
+  <div class=" h-fit flex justify-center">
+    <img
+     
+      :src="`/titletext.png`"
+      class="contactimagemobile w-full"
+    />
+  </div>
+</div> -->
+
+                <!-- <Header /> -->
+
+                <div class="p-10">
+                  <p
+                    class="abouttexttitle text-center uppercase text-[6rem] leading-[5.5rem] pb-5"
                   >
-                    <MediaImage
-                      :size="section.image.size"
-                      :aspect="section.image.aspect"
-                      :src="section.image.image"
-                      v-if="section.image.image"
-                      class="contactimagemobile"
-                    ></MediaImage>
+                    Chisara Agor
+                  </p>
+
+                  <!-- press -->
+                  <div
+                    v-if="home.sections3"
+                    class="presssecmd text-center justify-center md:pt-20 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                  >
+                    <div
+                      v-for="sections3 in home.sections3"
+                      :key="sections3._key"
+                      class="md:p-5 presssecinnermd"
+                    >
+                      <div class="presssec">
+                        <p
+                          v-if="sections3.title3"
+                          class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
+                        >
+                          <span>{{ sections3.title3 }}</span>
+                        </p>
+                        <Richtext
+                          class="presssectext uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]"
+                          :blocks="sections3.content3"
+                          v-if="sections3.content3"
+                        ></Richtext>
+                        <NuxtLink
+                          v-if="sections3.title3"
+                          to="/"
+                          class="presssectextlink justify-start text-[3.5rem] leading-[4.5rem]"
+                        >
+                          <span>view here</span>
+                        </NuxtLink>
+                      </div>
+                      <!-- Arrow pointing down -->
+                      <!-- <div class="pt-5 justify-start arrow-down">
+                      <i class="fas fa-arrow-down"></i>
+                    </div> -->
+                    </div>
                   </div>
+
+                  <!-- contct -->
+                  <!-- Display the About Image    v-if="section.image.image"-->
+                  <div id="contact" class="anchor">
+                    <div
+                      v-if="home.sections2"
+                      class="contact-section text-center contactsecmd pt-20 flex justify-between"
+                    >
+                      <div class="contactsecall pt-28 md:pt-0">
+
+                        <p
+                    class="abouttexttitle uppercase text-[1.5rem] leading-[1.5rem] pb-5"
+                  >
+                    Contact
+                  </p>
+
+                        <div class="md:flex md:pt-0">
+                          <div class="">
+                            <div
+                              v-for="sections2 in home.sections2"
+                              :key="sections2._key"
+                              class="contacttextmd"
+                            >
+                              <div
+                                v-if="sections2.content2"
+                                class="contactsec  text-[1.4rem] leading-[1.4rem]"
+                              >
+                                <Richtext
+                                  class="p-5 contactinner"
+                                  :blocks="sections2.content2"
+                                  v-if="sections2.content2"
+                                ></Richtext>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- <div class="w-3/12">
+                            <div>
+                              <p class="p-5 pb-0 text-[1.5rem] justify-start">
+                                <span><br /></span>
+                              </p>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <!-- Social Media Icons -->
+<div class="social-icons text-center mt-10">
+  <a href="https://www.facebook.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.instagram.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <!-- Add more social media icons as needed -->
+</div>
+
+
+                  <p
+                    class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pt-20 pb-5"
+                  >
+                    About Chisara Agor
+                  </p>
+
+                  <Richtext
+                    class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
+                    :blocks="section.content"
+                    v-if="section.content"
+                  ></Richtext>
+
+                  <Richtext
+                    class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
+                    :blocks="section.content"
+                    v-if="section.content"
+                  ></Richtext>
                 </div>
-                <!-- <p class="md:p-5 md:pt-0 pt-10 md:pb-0 pb-5 abouttitle scriptedt flex justify-end text-6xl">
-              <span>Scripted</span>
-            </p> -->
-
-
-            <p class=" pb-5 ">
-               About
-              </p>
-
-
-                <Richtext
-                  class="abouttextdesk  md:p-5 text-[1.7rem] md:contents hidden leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-                <Richtext
-                  class="abtextmb  contents md:hidden md:p-5 text-[1.7rem] leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-                
 
                 <!-- Add a button to toggle the collapsible section -->
                 <button
@@ -78,79 +178,13 @@
                 <!-- about textt -->
                 <div v-if="isCollapsibleOpen" class="collapsible-section">
                   <Richtext
-                    class="abtextmbopen md:p-5  text-[1.7rem] leading-[1.7rem]"
+                    class="abtextmbopen md:p-5 text-[1.7rem] leading-[1.7rem]"
                     :blocks="section.content"
                     v-if="section.content"
                   ></Richtext>
                 </div>
               </div>
               <!-- </div> -->
-
-              <!-- contct -->
-              <!-- Display the About Image    v-if="section.image.image"-->
-              <div id="contact" class="anchor">
-                <div
-                  v-if="home.sections2"
-                  class="contact-section contactsecmd pt-20 flex justify-between"
-                >
-                  <div class="contactsecall pt-28 md:pt-0">
-                    <!-- contact title text-6xl -->
-                    <div
-                      class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 md:pl-0 pb-3"
-                    >
-                      <div class="">
-                        <span>Get in touch</span>
-                      </div>
-                    </div>
-
-                    <!-- contact text -->
-                    <div class="md:flex md:pt-0">
-                      <div>
-                        <div>
-                          <!-- leading-[1.5rem] text-[1.5rem] -->
-                          <p
-                            class="md:pl-5 hidden md:contents pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
-                          >
-                            <span>Contact</span>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="md:pl-10">
-                        <div
-                          v-for="sections2 in home.sections2"
-                          :key="sections2._key"
-                          class="contacttextmd"
-                        >
-                          <div
-                            v-if="sections2.content2"
-                            class="contactsec text-[1.7rem] leading-[1.7rem]"
-                          >
-                            <!-- <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
-                    <span>{{ sections2.title2 }}</span>
-                  </p> -->
-                            <Richtext
-                              class="pb-2 contactinner"
-                              :blocks="sections2.content2"
-                              v-if="sections2.content2"
-                            ></Richtext>
-                          </div>
-                        </div>
-                      </div>
-
-                     
-
-                      <div class="w-3/12">
-                        <div>
-                          <p class="p-5 pb-0 text-[1.5rem] justify-start">
-                            <span><br /></span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </span>
         </div>
@@ -164,12 +198,12 @@
             :aspect="section.image4.aspect"
             :src="section.image4.image4"
             v-if="section.image4.image4"
-            class="landingimg max-h-full  object-cover"
+            class="landingimg max-h-full object-cover"
           ></MediaImage>
           <MediaVideo
             :id="section.video.id"
             v-if="section.video.id"
-            class="md:max-h-full min-w-full  object-cover"
+            class="md:max-h-full min-w-full object-cover"
           ></MediaVideo>
           <!-- Display YouTube Video -->
           <iframe
@@ -191,6 +225,29 @@
         </div>
       </div>
 
+      <div
+        v-for="section in home.sections"
+        :key="section._key"
+        class="imgover md:pt-0 md:pb-20 abouttitle flex md:justify-center text-5xl md:text-6xl"
+      >
+        <div
+          v-if="section.image.image"
+          class="contactimagemobilecont h-fit flex justify-center"
+        >
+          <MediaImage
+            :size="section.image.size"
+            :aspect="section.image.aspect"
+            :src="section.image.image"
+            v-if="section.image.image"
+            class="contactimagemobile w-full"
+            @click="startGlitchEffect"
+          ></MediaImage>
+        </div>
+      </div>
+
+      <!-- <p class="imgtext pb-5 ">
+        COPYRIGHT ©2024 CHISARA AGOR
+              </p> -->
       <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
     </div>
   </div>
@@ -203,6 +260,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Marqueec from "~/components/Marqueec.vue";
 // import Vue3Marquee from 'vue3-marquee';
 // import AboutPage from '~/components/AboutPage.vue'
+import Header from "~/components/layout/Header.vue";
 import LenisComponent from "~/components/LenisComponent.vue";
 import Lenis from "@studio-freight/lenis";
 // import gsap from 'gsap';
@@ -214,6 +272,7 @@ export default {
   components: {
     Marqueec,
     LenisComponent,
+    Header,
   },
 
   data() {
@@ -231,6 +290,7 @@ export default {
       abouts: [],
       activeStyle: { textDecoration: "none" },
       isCollapsibleOpen: false,
+      isGlitching: false,
     };
   },
 
@@ -360,6 +420,13 @@ export default {
       });
     },
 
+    startGlitchEffect() {
+      this.isGlitching = true;
+      setTimeout(() => {
+        this.isGlitching = false;
+      }, 1000); // Adjust the duration of the glitch effect
+    },
+
     setProject(reference) {
       this.project = reference;
     },
@@ -430,6 +497,142 @@ export default {
 </script>
 
 <style scoped>
+.imgtext {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  /* font-family: 'AtlasGrotesk'; */
+  font-size: 1rem;
+  /* line-height: .5rem; */
+  /* width: 5vw; */
+}
+
+.imgover {
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.contactimagemobilecont:hover {
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg) translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: scale(1.1) rotate(2deg) translate(-2px, -1px);
+    filter: hue-rotate(10deg);
+  }
+  20% {
+    transform: scale(1) rotate(-1deg) translate(2px, 0px);
+    filter: hue-rotate(20deg);
+  }
+  30% {
+    transform: scale(1.05) rotate(1deg) translate(-1px, 1px);
+    opacity: 0.8;
+    filter: hue-rotate(30deg);
+  }
+  40% {
+    transform: scale(0.95) rotate(-2deg) translate(0px, 0px);
+    opacity: 0.6;
+    filter: hue-rotate(40deg);
+  }
+  50% {
+    transform: scale(1) rotate(0deg) translate(0px, 0px);
+    opacity: 0.4;
+    filter: hue-rotate(50deg);
+  }
+  60% {
+    transform: scale(1.03) rotate(-1deg) translate(1px, -1px);
+    opacity: 0.6;
+    filter: hue-rotate(60deg);
+  }
+  70% {
+    transform: scale(0.97) rotate(2deg) translate(-1px, 1px);
+    opacity: 0.8;
+    filter: hue-rotate(70deg);
+  }
+  80% {
+    transform: scale(1) rotate(0deg) translate(0px, 0px);
+    opacity: 1;
+    filter: hue-rotate(80deg);
+  }
+  90% {
+    transform: scale(1.02) rotate(1deg) translate(2px, 1px);
+    opacity: 0.6;
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg) translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.contactimagemobile {
+  animation: glitch 1s linear; /* Adjust the duration as needed */
+  animation-fill-mode: forwards;
+}
+
+.contactimagemobilecont {
+  opacity: 1;
+}
+
+.contactimagemobilecont img {
+  opacity: 1;
+}
+
+.contactimagemobilecont img:hover {
+  opacity: 0.8;
+}
+
+.contactimagemobilecont img:active {
+  opacity: 0.6;
+}
+
+.contactimagemobilecont img:focus {
+  opacity: 0.6;
+}
+
+.contactimagemobilecont img:visited {
+  opacity: 0.6;
+}
+
+.contactimagemobilecont img:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.contactimagemobilecont img:hover:after {
+  opacity: 0;
+}
+
+.contactimagemobilecont img:active:after {
+  opacity: 0;
+}
+
+.contactimagemobilecont img:focus:after {
+  opacity: 0;
+}
+
+.contactimagemobilecont img:visited:after {
+  opacity: 0;
+}
+
 .cursor-pointer {
   cursor: pointer; /* Set cursor to pointer */
 }
@@ -440,8 +643,14 @@ export default {
 
 .abouttitletexta {
   text-transform: uppercase;
-  font-size: 5rem;
-  line-height: 3.5rem;
+  font-size: 7rem;
+  line-height: 7.5rem;
+  /* width: 20vw; */
+  /* padding: 5rem; */
+  padding-bottom: 5rem;
+  /* padding-top: 0; */
+  /* color: hsl(249.94deg 74.43% 42.94%); */
+  font-family: "AtlasGrotesk", sans-serif;
 }
 /* Arrow down styles */
 .arrow-down {
@@ -458,7 +667,7 @@ export default {
   /* line-height: 4.3rem; */
   text-transform: uppercase;
   /* font-family: "GTWalsheimdb"; */
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   padding-top: 5rem;
   text-align: center;
 }
@@ -467,7 +676,7 @@ export default {
   /* font-weight: bolder; */
   color: whitesmoke;
   /* color: #2a2a2a; */
-  font-family: "GTWalsheimd";
+  /* font-family: "GTWalsheimd"; */
   left: 50%;
   top: 50%;
   /* width: 100vw; */
@@ -492,18 +701,21 @@ export default {
   /* line-height: 2.25rem;
   font-size: 3.75rem; */
   /* line-height: 2.5rem ; */
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   /* text-transform: uppercase; */
 }
 
 .scriptedt {
-  font-family: "GTWalsheimb";
+  /* font-family: "GTWalsheimb"; */
 }
 
 .contactsecall {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .contacttitle {
@@ -523,6 +735,13 @@ export default {
   /* text-transform: uppercase;*/
 }
 
+
+
+.contacttextmd{
+  padding-bottom: 2rem;
+  /* border: 1px solid hsl(249.94deg 74.43% 42.94%); */
+}
+
 .presssec {
   /* font-family: "GTWalsheiml" !important; */
   /* font-size: 1.5rem !important;
@@ -536,12 +755,21 @@ export default {
 }
 
 .presssectext {
-  font-family: "GTWalsheiml";
-  text-transform: none !important;
+  /* font-family: "GTWalsheiml"; */
+  /* text-transform: none !important; */
+  color: hsl(249.94deg 74.43% 42.94%);
   display: flex;
   justify-content: space-between !important;
   padding-top: 1rem;
 }
+
+.presssectextlink {
+  padding-top: 1rem;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
 .aboutsec {
   /* width: 100vw; */
   width: 50vw;
@@ -550,15 +778,17 @@ export default {
   justify-content: center;
   overflow-y: scroll;
   /* font-family: 'GTWalsheimdb'; */
-  border-right: 2px solid hsl(249.94deg 74.43% 42.94%); /* Adjust the color and width as needed */
+  /* border-right: 2px solid hsl(249.94deg 74.43% 42.94%);  */
+  border-right: 1px solid black;
 }
 
-.abouttitletexta{
-color: hsl(249.94deg 74.43% 42.94%);
+.abouttexttitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
 }
 
-
-.homeimgsize{
+.homeimgsize {
   width: 50vw;
   height: 100vh;
   display: flex;
@@ -576,13 +806,13 @@ color: hsl(249.94deg 74.43% 42.94%);
   z-index: 10 !important;
 }
 
-.contacttextmd:nth-child(1) {
+/* .contacttextmd:nth-child(1) {
   padding-bottom: 2rem;
 }
 
 .contacttextmd:nth-child(3) {
   padding-bottom: 2rem;
-}
+} */
 
 /*  
 .contacttextmd:nth-child(6) .contactsec
@@ -596,7 +826,7 @@ color: hsl(249.94deg 74.43% 42.94%);
   }
 
   .abouttitletexta {
-    font-family: "GTWalsheimbb";
+    /* font-family: "GTWalsheimbb"; */
     /* text-transform: uppercase; */
     font-size: 4rem;
     line-height: 4rem;
@@ -634,7 +864,7 @@ color: hsl(249.94deg 74.43% 42.94%);
     /* padding-top: 1.25rem; */
   }
 
-  .contacttextmd:nth-child(1) {
+  /* .contacttextmd:nth-child(1) {
     padding-bottom: 0rem;
     padding-top: 1.25rem;
   }
@@ -651,7 +881,7 @@ color: hsl(249.94deg 74.43% 42.94%);
 
   .contacttextmd:nth-child(4) {
     padding-top: 2rem;
-  }
+  } */
 
   .contactsec {
     font-size: 1.7rem !important;
@@ -660,13 +890,13 @@ color: hsl(249.94deg 74.43% 42.94%);
   }
 
   .contactheader {
-    font-family: "GTWalsheimbb";
+    /* font-family: "GTWalsheimbb"; */
     /* text-transform: uppercase; */
     font-size: 3rem;
   }
 
   .presstitle {
-    font-family: "GTWalsheimbb";
+    /* font-family: "GTWalsheimbb"; */
     text-transform: none;
     font-size: 3rem;
     line-height: 3rem;
