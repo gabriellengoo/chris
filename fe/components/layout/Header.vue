@@ -1,11 +1,11 @@
 <template>
   <!-- bg-white -->
   <header
-    class=" absolute top-0 w-3/6  pb-10  leading-snug uppercase   "
+    class=" absolute top-[40vh] w-screen justify-center  pb-10  leading-snug uppercase   "
   >
   <!-- justify-center fixed border-b-2 border-black pt-8 -->
     <div
-      class=" mobilemenu headbg flex justify-center flex-wrap  items-center gap-4 p-2 md:pb-2 md:pt-2 md:flex-nowrap"
+      class=" mobilemenu headbg flex  flex-wrap  items-center gap-4 p-2 md:pb-2 md:pt-2 md:flex-nowrap"
     >
     <!-- <Animation></Animation> -->
     <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
@@ -21,11 +21,30 @@
         
 
 
-  <nav class="headtoplinks w-[45vw] linktextmb text-[2rem] justify-between flex">
+  <nav class="headtoplinks w-screen p-20 linktextmb text-[1.2rem] justify-between flex items-center">
     <NuxtLink to="/" class="header-link">Home</NuxtLink>
         <NuxtLink to="/works">Work</NuxtLink>
-        <NuxtLink to="/poetry" >Poetry</NuxtLink>
+        <NuxtLink class="text-[2rem] titletextfont" to="/works">Chisara Agor</NuxtLink>
+                               <!-- Social Media Icons -->
+<div class="social-icons text-center items-center flex flex-col">
+  <NuxtLink to="/poetry" >Poetry</NuxtLink>
+ <div>
+  <a href="https://www.facebook.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.instagram.com/YourPage" target="_blank" class="social-icon">
+    <i class="fab fa-instagram"></i>
+  </a>
+ </div>
+  <!-- Add more social media icons as needed -->
+</div>
+
       </nav>
+
+
 
       <!-- <SearchBar /> -->
 
@@ -104,11 +123,35 @@ export default {
  /* background: #f3f3f7; */
 }
 
-.headtoplinks{
+a{
+  position: relative;
+  color: #000; 
+  text-decoration: none; 
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px; 
+  bottom: 0;
+  left: 0;
+  background-color: #000; 
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out; 
+}
+
+ a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* .headtoplinks{
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-style: normal;
-}
+} */
 
 .titleText {
   /* font-family: 'AtlasGrotesk', sans-serif; */

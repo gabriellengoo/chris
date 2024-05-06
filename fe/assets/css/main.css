@@ -20,8 +20,9 @@ html {
   height: auto;
   min-height: 100vh !important;
   background: #f3f3f7;
-  background: #131211;
-  color: white; 
+  /* background: #131211; */
+  /* color: white;  */
+  color:  #131211; 
   /* background: black;
   color: white; */
   /* overflow: hidden; */
@@ -42,10 +43,43 @@ html {
   padding: .5rem;
 }
 
+header{
+  z-index: 99999;
+  background-color: none;
+}
+
+.blurfilter{
+  /* filter: blur(20px); */
+  filter: blur(20px);
+  opacity: .5;
+} 
+
+.background-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 70vh;
+  filter: blur(70px);
+  transform: translate(-50%, -50%);
+  /* background-color: rgb(255, 255, 255); */
+  /* background-color: hsl(249.94deg 74.43% 42.94%); */
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(55, 28, 191) 30%, rgba(255, 255, 255, 0.833) 100%);
+  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.833) 100%);
+  /* opacity: .9; */
+  z-index: 9998; /* Ensure it's behind the enlarged item */
+  transition: opacity 0.3s ease; /* Add a smooth transition effect */
+  pointer-events: none; /* Allow interactions with the underlying content */
+}
 
 a{
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
+
+
+
+
 
 /* button{
   cursor: url('/CURSOR.svg'), auto !important;

@@ -757,7 +757,7 @@ export default {
 .presssectext {
   /* font-family: "GTWalsheiml"; */
   /* text-transform: none !important; */
-  color: hsl(249.94deg 74.43% 42.94%);
+  color: rgb(55, 28, 191);
   display: flex;
   justify-content: space-between !important;
   padding-top: 1rem;

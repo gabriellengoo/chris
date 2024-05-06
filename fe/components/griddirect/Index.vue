@@ -2,16 +2,17 @@
   <client-only> 
     <!-- pt-28 class="w-4/12 p-10 "-->
     <div class="">
-      <div class=" overflow-x-hidden h-[100vh] " ref="scrollContainer" @scroll="handleScroll">
+      <div class=" overflow-x-hidden h-[100vh] blurfilter " ref="scrollContainer" @scroll="handleScroll">
         <div v-for="item in items"  :key="item._key" class="">
-        <figure class=" w-[50vw]">
+        <figure class=" w-[10vw] " @mouseover="handleHover(item)"
+  @mouseleave="handleLeave">
           <NuxtLink
             v-if="item.reference.slug"
             :to="`/work/${item.reference.slug}`"
           >
           <!-- class="marquee-container" -->
             <span >
-              <figure>
+              <figure class="  p-10 ">
                 <MediaImage
                   :src="item.image.image"
                   v-if="item.image.image"
@@ -84,6 +85,33 @@
       </div>
       
    
+
+         <!-- Render the enlarged image or video here -->
+         <div v-if="hoveredItem" class="enlarged-item">
+          <div class="background-overlay"></div> 
+  <!-- Render the hovered item -->
+  <div class="p-10 ">
+    <NuxtLink v-if="hoveredItem.reference.slug" :to="`/work/${hoveredItem.reference.slug}`">
+      <span>
+        <figure class="">
+          <MediaImage
+            class="pointer-events-none w-[25vw]"
+            :src="hoveredItem.image.image"
+            v-if="hoveredItem.image && hoveredItem.image.image"
+          ></MediaImage>
+          <MediaVideo
+            class="pointer-events-none w-[25vw]"
+            :id="hoveredItem.video.id"
+            v-if="hoveredItem.video && hoveredItem.video.id"
+            :thumbTime="hoveredItem.video.thumbTime"
+          ></MediaVideo>
+        </figure>
+      </span>
+    </NuxtLink>
+  </div>
+</div>
+
+
     </div>
   </client-only>
 </template>
@@ -97,6 +125,7 @@ export default {
       containerClass: "flex flex-col w-full h-full",
       imageClass: "contain-image",
       isDesktop: false,
+      hoveredItem: null,
       scrollInterval: null, // Initialize scroll interval variable
     };
   },
@@ -128,6 +157,13 @@ export default {
         this.$redrawVueMasonry();
       }
     },
+
+    handleHover(item) {
+    this.hoveredItem = item;
+  },
+  handleLeave() {
+    this.hoveredItem = null;
+  },
 
     handleScroll() {
   const scrollContainer = this.$refs.scrollContainer;
@@ -209,7 +245,31 @@ export default {
 }
 } */
 
+.enlarged-item {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
 
+.enlarged-item img {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  /* height: 20vh; */
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+
+.enlarged-item:hover .background-overlay {
+  opacity: 0; /* Fade out the background overlay on hover */
+}
 
 .blur {
   filter: blur(5px);

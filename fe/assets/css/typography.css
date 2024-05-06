@@ -29,9 +29,9 @@
 @font-face {
   font-family: 'greed';
   src: 
-    url('~assets/fonts/Greed-Regular.woff2') format('woff2'),
-    url('~assets/fonts/Greed-Regular.woff') format('woff');
-  font-weight: 200;
+    url('~assets/fonts/Greed-Medium.woff2') format('woff2'),
+    url('~assets/fonts/Greed-Medium.woff') format('woff');
+    font-weight: normal;
   font-display: swap;
 }
 
@@ -51,18 +51,25 @@
   }
   
   body {
-    font-family: 'greed', sans-serif;
+    /* font-family: 'greed', sans-serif; */
+    font-family: Atlas Grotesk, sans-serif;
     /* color: hsl(249.94deg 74.43% 42.94%); */
     /* font-family: arial; */
     /* letter-spacing: -.2px; */
     /* font-family: "Roboto", sans-serif; */
-    font-style: normal;
-    font-weight: 400;
+    /* font-weight: 400; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
     /* font-size: 10.3px; */
   } 
+
+  .titletextfont{
+    font-family: 'greed', sans-serif;
+    font-size: 3.5rem !important;
+       /* font-family: "Roboto", sans-serif; */
+    font-weight: 400;
+  }
 
   @media only screen and (min-width: 2560px) {
 
