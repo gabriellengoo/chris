@@ -403,7 +403,7 @@ export default {
         fullWidth, imageWidth, overlayimageWidth,thumbnailTime, youtubeUrl,vimeoUrl, images[] {
           ..., "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio, "thumbTime" : video.asset->thumbTime}
         }
-      }, 
+      },  
       
       "talent" : talent->title, "talentSlug" : talent->slug.current,
       "footer" : footer,

@@ -78,7 +78,7 @@ export default {
             presets: ['@babel/preset-env'],
           },
         },
-      });
+      }); 
     },
     postcss: {
       postcssOptions: {
