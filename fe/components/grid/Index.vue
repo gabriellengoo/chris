@@ -105,7 +105,7 @@
             v-if="hoveredItem.video && hoveredItem.video.id"
             :thumbTime="hoveredItem.video.thumbTime"
           ></MediaVideo>
-        </figure>
+        </figure> 
         <figcaption
                 class="capplace font-bold block  mr-auto "
                 v-if="size == 'small'"
@@ -126,7 +126,7 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 export default {
-  props: ["items", "size"],
+  props: ["items", "size"], 
   data() {
     return {
       project: false,

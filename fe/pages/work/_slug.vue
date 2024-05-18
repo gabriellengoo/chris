@@ -10,7 +10,7 @@
 
 
       <div
-      class="mobileslugtitle bcbtn hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
+      class="presssectext p-5 font-bold flex justify-end uppercase  md:pb-5 text-[6.5rem] leading-[5.5rem]"
     >
       <!-- <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button> -->
       <a
@@ -18,7 +18,7 @@
               href="./../"
               rel="noopener noreferrer"
             >
-            Home
+            CHISARA AGOR
             </a>
     </div>
 
@@ -39,16 +39,15 @@
               class="projectetxt inner-div pl-[1.5rem] textppad pb-5 top-[0vh] w-screen projecttextmb"
               id="titleInnerDiv"
             >
-              <div class="mobileslugtitle mbback md:hidden flex">
-                <!-- <button class="z-50 pb-8 pt-0" @click="goBack">Back</button> -->
+              <!-- <div class="presssectext flex justify-end uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]">
               <a
               class="z-50 pb-8 pt-0"
               href="./../"
               rel="noopener noreferrer"
             >
-            Home
+            CHISARA AGOR
             </a>
-              </div>
+              </div> -->
 
               <div class="pb-5 mobileslugtitle ptitle">{{ project.title }}</div> 
 

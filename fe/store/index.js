@@ -38,8 +38,8 @@ export const mutations = {
   SET_FOOTER(state, footer) {
     state.footer = footer
   },
-  SET_POEMS_PAGE(state, aboutPage) {
-    state.aboutPage = aboutPage
+  SET_POEMS_PAGE(state, poems) {
+    state.poems = poems
   },
   // SET_CONTACT(state, contact) {
   //   state.contact = contact
@@ -74,33 +74,43 @@ export const actions = {
       const grid2 = await this.$sanity.fetch(gridQuery2)
       commit('SET_GRID', grid2)
 
-         // Works Grid
-        //  const gridQuerym = groq`*[_type == "works" ] {gridm[] {_key, double, spacer, youtubeUrl,vimeoUrl, "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio}, "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "size" : {"width" : image.asset->metadata.dimensions.width, "height" : image.asset->metadata.dimensions.height}, "position" : position}, link, title, "reference" : {"key" : reference._ref, "title" : reference->title, "clients" : reference->client[].label, "slug" : reference->slug.current, "talent" : reference->talent->title, "talentId" : reference->talent._ref, "team" : reference->team, "meta" : reference->meta}}} | order(_updatedAt desc)[0]`
-        //  const gridm = await this.$sanity.fetch(gridQuerym)
-        //  commit('SET_GRID', gridm)
 
-    // Contact
-    // const contactQuery = groq`*[_type == "about" ] {contactDetails} | order(_updatedAt desc)[0]`
-    // const contact = await this.$sanity.fetch(contactQuery)
-    // commit('SET_CONTACT', contact.contactDetails)
+
+      const poemsQuery = groq`*[_type == "poems"]{
+        ...,
+        sections[]{
+          _key,
+          title,
+          content
+        }
+      } | order(_updatedAt desc)[0]`;
+      const poems = await this.$sanity.fetch(poemsQuery);
+      commit('SET_POEMS_PAGE', poems);
+
   },
+
+
   async fetchAboutPage({ commit }) {
     const query = groq`*[_type == "about"]`;
     const aboutPage = await this.$sanity.fetch(query);
     commit('SET_ABOUT_PAGE', aboutPage);
   },
-  async fetchPoems({ commit }) {
-    const poemsQuery = groq`*[_type == "poems"]{
-      ...,
-      sections[]{
-        _key,
-        title,
-        content
-      }
-    } | order(_updatedAt desc)[0]`;
-    const poems = await this.$sanity.fetch(poemsQuery);
-    commit('SET_POEMS_PAGE', poems);
-  },
+
+
+  // async fetchPoems({ commit }) {
+  //   const poemsQuery = groq`*[_type == "poems"]{
+  //     ...,
+  //     sections[]{
+  //       _key,
+  //       title,
+  //       content
+  //     }
+  //   } | order(_updatedAt desc)[0]`;
+  //   const poems = await this.$sanity.fetch(poemsQuery);
+  //   commit('SET_POEMS_PAGE', poems);
+  // },
+
+
   setTitle({ commit }, title) {
     commit('SET_TITLE', title)
   },

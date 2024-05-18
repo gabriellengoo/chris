@@ -107,7 +107,7 @@
           ></MediaVideo>
           
         </figure>
-        <figcaption
+        <figcaption 
                 class="capplace font-bold block  mr-auto "
                 v-if="size == 'small'"
               >

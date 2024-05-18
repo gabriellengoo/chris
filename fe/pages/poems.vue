@@ -81,7 +81,7 @@ import LenisComponent from "~/components/LenisComponent.vue";
 // import Richtext from "~/components/Richtext.vue"; 
 
 export default {
-  name: "IndexPage",
+  name: "Poems",
 
   components: {
     Marqueec,
@@ -198,10 +198,18 @@ export default {
 
   computed: {
     ...mapState(["menu"]),
+    ...mapState({
+      poems: state => state.poems.data,
+    }),
 
     arrowIconClass() {
       return this.isCollapsibleOpen ? "fas fa-arrow-up" : "fas fa-arrow-down";
     },
+  },
+
+
+  mounted() {
+    this.$store.dispatch('fetchPoems');
   },
 };
 </script>

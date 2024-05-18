@@ -329,8 +329,9 @@
 
     <div class="new-section" :style="{ transform: newSectionTransform }">
         <!-- <Poems v-if="currentSection === 'poems'" /> -->
+        <!-- <Poems /> -->
         <Works/>
-
+ 
       </div>
     </div>
 
@@ -349,7 +350,8 @@ import Header from "~/components/layout/Header.vue";
 import LenisComponent from "~/components/LenisComponent.vue";
 import Lenis from "@studio-freight/lenis";
 import Works from "~/pages/works.vue";
-import Poemspg from "~/components/Poems.vue";
+// import Poems from "~/components/Poems.vue";
+import Poems from "~/pages/poems.vue";
 import Home from "~/pages/index.vue";
 // import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -363,7 +365,7 @@ export default {
     Header,
     Works,
     Home,
-    Poemspg,
+    Poems,
   },
 
   data() {
@@ -501,11 +503,18 @@ export default {
   // requestAnimationFrame(raf)
 
   //   },
-  mounted() {},
+  mounted() {
+    this.loadData();
+  },
 
   methods: {
+    ...mapActions(['fetchPoems']),
     ...mapActions(["setTitle"]),
     ...mapMutations(["TOGGLE_MENU"]),
+
+    async loadData() {
+      await this.fetchPoems();
+    },
 
     handleArrowClick() {
       // Scroll down by 100vh
@@ -598,6 +607,10 @@ export default {
       // fas fa-arrow-up
       return this.isCollapsibleOpen ? "" : "fas fa-arrow-down";
     },
+
+    ...mapState({
+      poems: state => state.poems.data,
+    }),
   },
   // created() {
   //   this.setTitle(this.home.title);

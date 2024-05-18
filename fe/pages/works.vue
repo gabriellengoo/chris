@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <!-- home img -->
+      <!-- home img --> 
       <div>
         <p class=" cursor-pointer textmul text-[1.5rem]" @mouseenter="cycleHoverText" @click="cycleGrid">{{ hoverText }}</p>
         <!-- <button class="textmul text-[1.5rem]" @click="goBack">Go Back</button> -->
