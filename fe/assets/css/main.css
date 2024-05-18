@@ -44,6 +44,37 @@ html {
     color: white;
 }
 
+
+.backc {
+  z-index: 0 !important;
+  position: relative;
+  text-transform: uppercase;
+  position: absolute;
+    /* top: 5vh; */
+    padding-top: 14rem;
+}
+
+.bcbtn{
+  top: 22vh;
+    left: -3.3vw;
+    position: relative;
+
+    top: 2.5vh;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+
+.bcbtn2{
+  top: 22vh;
+    left: -3.3vw;
+    position: relative;
+
+    top: 5.5vh;
+    font-size: large;
+    text-transform: uppercase;
+}
+
 /* .contactinner p a{
   border: 1px solid white;
   padding: .5rem;

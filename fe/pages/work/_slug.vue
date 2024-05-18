@@ -10,15 +10,22 @@
 
 
       <div
-      class="mobileslugtitle hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
+      class="mobileslugtitle bcbtn hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
     >
-      <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button>
+      <!-- <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button> -->
+      <a
+              class="z-50 pb-8 pt-0"
+              href="./../"
+              rel="noopener noreferrer"
+            >
+            Home
+            </a>
     </div>
 
 
 
       <!-- pt-28 -->
-      <div v-if="!isGalleryExpanded" class="bottom-div p-2 xl:pt-[18rem] 2xl:pt-[14rem]">
+      <div v-if="!isGalleryExpanded" class="bottom-div p-2 ">
     <div class="flex">
       <div
           v-if="project"
@@ -33,7 +40,14 @@
               id="titleInnerDiv"
             >
               <div class="mobileslugtitle mbback md:hidden flex">
-                <button class="z-50 pb-8 pt-0" @click="goBack">Back</button>
+                <!-- <button class="z-50 pb-8 pt-0" @click="goBack">Back</button> -->
+              <a
+              class="z-50 pb-8 pt-0"
+              href="./../"
+              rel="noopener noreferrer"
+            >
+            Home
+            </a>
               </div>
 
               <div class="pb-5 mobileslugtitle ptitle">{{ project.title }}</div> 
@@ -1402,14 +1416,7 @@ display:contents;
   text-transform: uppercase;
 }
 
-.backc {
-  z-index: 0 !important;
-  position: relative;
-  text-transform: uppercase;
-  position: absolute;
-    /* top: 5vh; */
-    padding-top: 14rem;
-}
+
 
 iframe .gallery-image {
   height: 70vh;
@@ -1517,7 +1524,7 @@ pointer-events: none !important;
 
 @media (min-width: 2560px) {
   .bottom-div {
-    padding-top: 21rem !important;
+    /* padding-top: 21rem !important; */
   }
 
   .textppad {
@@ -1574,7 +1581,7 @@ pointer-events: none !important;
 }
 
 .bottom-div {
-  padding-top: 14rem;
+  /* padding-top: 14rem; */
   min-height: 100vh;
   /* padding-bottom: 5rem; */
   transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
@@ -1593,7 +1600,7 @@ pointer-events: none !important;
   /* Your CSS styles for screens smaller than 1024px go here */
   /* For example, you can change the font size or layout */
   .bottom-div {
-    padding-top: 5rem;
+    /* padding-top: 5rem; */
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
   }
 }
@@ -1602,7 +1609,7 @@ pointer-events: none !important;
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   /* Add your styles here */
   .bottom-div {
-    padding-top: 12rem !important;
+    /* padding-top: 12rem !important; */
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
   }
 
@@ -1624,7 +1631,7 @@ pointer-events: none !important;
   }
 
   .bottom-div {
-    padding-top: 10rem;
+    /* padding-top: 10rem; */
     z-index: 0;
     /* padding-bottom: 10rem; */
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;

@@ -1,14 +1,26 @@
 <template>
   <main class="mt-1  w-screen flex h-screen overflow-hidden flex-col justify-center">
     <div class="bordersec">
+
+      <div
+      class="mobileslugtitle bcbtn2 hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
+    >
+      <!-- <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button> -->
+      <a
+              class="z-50 pb-8 pt-0"
+              href="./../"
+              rel="noopener noreferrer"
+            >
+            Home
+            </a>
+    </div>
+
+
     <div class="    h-screen overflow-hidden flex flex-col justify-center">
       <!-- Section Titles List]-->
-      <div
-      class="mobileslugtitle hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
-    >
-      <button  class="backc z-50 px-8 py-8" @click="goBack">Back Home</button>
-    </div>
     
+
+
       <div v-if="poems && poems.sections" class=" flex justify-center  section-list">
         <ul class="w-[50vw]  abouttexttitle font-bold text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5">
           <li
