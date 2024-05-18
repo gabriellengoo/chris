@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="containerhome absolute top-[2vh]" :style="{ transform: containerTransform }">
-      <div class="w-[100vw]  h-screen">
+    <div class="containerhome" :style="{ transform: containerTransform }">
+      <div class="w-[100vw] h-screen">
         <button
-          class=" z-20 top-[2vh] fixed left-[45vw] text-[white]"
+          class="absolute z-20 top-[2vh] left-[45vw] text-[white]"
           @click="TOGGLE_MENU()"
         >
           <!-- Hamburger Icon -->
@@ -34,16 +34,12 @@
         </button>
         <div class="absolute z-20 top-[40vh] w-[50vw]">
           <div v-if="menu" class="flex flex-col justify-center">
-          
-
-            <a
-              v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] pb-5"
-              href="./"
-              rel="noopener noreferrer"
+            <button
+              class="abouttexttitle uppercase text-[1.8rem] leading-[1.5rem] pb-5 text-[white]"
+              @click="goBack"
             >
-            Home
-            </a>
+              Home
+            </button>
 
             <a
               v-if="menu"
@@ -56,7 +52,7 @@
 
             <button
               class="abouttexttitle uppercase text-[1.8rem] leading-[1.5rem] text-[white]"
-              @click="transitionToPoems"
+              @click="navigateToPage('/poems')"
             >
               Poems
             </button>
@@ -100,11 +96,11 @@
           </button>
         </div>
 
-        <!-- <Home v-if="currentSection === 'home'" /> -->
+        <Home />
       </div>
 
       <div class="new-section" :style="{ transform: newSectionTransform }">
-        <Poems v-if="currentSection === 'poems'" />
+        <Poems />
       </div>
     </div>
   </div>
@@ -114,7 +110,7 @@
 import Works from "~/pages/works.vue";
 import Poems from "~/pages/poems.vue";
 import Home from "~/pages/index.vue";
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -124,37 +120,50 @@ export default {
   },
   data() {
     return {
-      currentSection: 'home',
       containerTransform: "translateX(0)",
-      newSectionTransform: "translateX(100vw)", // Initial position off-screen
+      newSectionTransform: "translateX(-50vw)", // Initial position
     };
+  },
+  mounted() {
+    this.$root.$on("slideBack", this.slideBack);
   },
   methods: {
     ...mapMutations(["TOGGLE_MENU"]),
 
     goBack() {
-      this.currentSection = 'home';
-      this.containerTransform = "translateX(0)";
-      this.newSectionTransform = "translateX(100vw)";
+      this.$root.$emit("slideBack");
     },
-    transitionToPoems() {
-      // Move the container to the left and bring in the Poems section
+    navigateToPage(route) {
+      // Move the container to the left
       this.containerTransform = "translateX(-50vw)";
+      // Move the new section in from the right
       this.newSectionTransform = "translateX(0)";
-      // Set the current section to 'poems'
-      this.currentSection = 'poems';
+      // Navigate to the new page after animation
+      setTimeout(() => {
+        this.$router.push(route);
+      }, 500); // Adjust according to your transition duration
+    },
+    slideBack() {
+      // Move the container to the left
+      this.containerTransform = "translateX(0vw)";
+      // Move the new section in from the right
+      this.newSectionTransform = "translateX(0)";
+      // Navigate to the new page after animation
+      setTimeout(() => {
+        this.$router.push(route);
+      }, 500); // Adjust according to your transition duration
     },
   },
   computed: {
     ...mapState(["menu"]),
 
     arrowIconClass() {
-      return this.isCollapsibleOpen ? "fas fa-arrow-up" : "fas fa-arrow-down";
+      // fas fa-arrow-up
+      return this.isCollapsibleOpen ? "" : "fas fa-arrow-down";
     },
   },
 };
 </script>
-
 
 <style>
 .abouttexttitle {

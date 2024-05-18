@@ -4,7 +4,7 @@
     <div class="">
       <div class=" overflow-x-hidden h-[100vh] blurfilter" ref="scrollContainer" @scroll="handleScroll">
         <div v-for="item in items"  :key="item._key" class="">
-        <figure class="  w-[10vw] "   @mouseover="handleHover(item)"
+        <figure class="  w-[20vw] "   @mouseover="handleHover(item)"
   @mouseleave="handleLeave">
           <NuxtLink
             v-if="item.reference.slug"
@@ -106,6 +106,13 @@
             :thumbTime="hoveredItem.video.thumbTime"
           ></MediaVideo>
         </figure>
+        <figcaption
+                class="capplace font-bold block  mr-auto "
+                v-if="size == 'small'"
+              >
+                <span v-if="hoveredItem.title">{{ hoveredItem.title }}</span>
+                <span v-else>{{ hoveredItem.reference.title }}</span>
+        </figcaption>
       </span>
     </NuxtLink>
   </div>

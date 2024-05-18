@@ -38,15 +38,55 @@ html {
 }
 
 
-.contactinner p a{
+.linktext{
+  display: flex;
+    justify-content: center;
+    color: white;
+}
+
+/* .contactinner p a{
   border: 1px solid white;
   padding: .5rem;
-}
+} */
 
 header{
   z-index: 99999;
   background-color: none;
 }
+
+.capplace{
+  padding-top: .5rem;
+  display: flex;
+  justify-content: center;
+  width: inherit;
+  font-size: 1.75rem !important;
+}
+
+.capplaces{
+  /* padding-top: .5rem; */
+  display: flex;
+  justify-content: center;
+  width: inherit;
+  font-size: 1.5rem !important;
+}
+
+.figsize{
+  display: flex;
+  justify-content: center;
+}
+
+
+.blurbg{
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(55, 28, 191) 30%, rgba(255, 255, 255, 0.833) 100%);
+  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.833) 100%);
+  z-index: 9998; /* Ensure it's behind the enlarged item */
+  transition: opacity 0.3s ease; /* Add a smooth transition effect */
+  filter: blur(20px);
+  opacity: .5;
+  pointer-events: none;
+}
+
 
 .blurfilter{
   /* filter: blur(20px); */

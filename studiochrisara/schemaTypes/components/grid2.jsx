@@ -115,6 +115,16 @@ export default {
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.reference),
         },
+
+        {
+          name: "dis",
+          title: "Description",
+          type: "string",
+          hidden: ({ parent, value }) =>
+            !value && (parent?.spacer || parent?.reference),
+        },
+
+
       ],
       preview: {
         select: {

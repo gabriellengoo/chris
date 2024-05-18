@@ -4,34 +4,23 @@
     <!-- <Headerproject /> -->
     <!-- <LenisComponent />  -->
 
-    <div
-      class="mobileslugtitle hidden left-[90vw] fixed md:flex justify-end text-[1.525rem]"
-    >
-      <button class="backc z-50 px-4 py-8" @click="goBack">Back</button>
-    </div>
+  
 
     <section>
-      <!-- <div class="h-screen fixed z-[10]"     v-if="isGalleryExpanded"   @keydown="handleKeyDown" >
-              <button v-if="isGalleryExpanded"
-                            tabindex="0"
-                            class=" backbtn top-0 left-0 z-30 w-1/2 h-full text-black back text-4xl previous"
-                            @click="prev"
-                            autofocus
-                            aria-label="Previous"
-                          >
-                          &lt; </button>
-              <button v-if="isGalleryExpanded"
-                        tabindex="0"
-                        class="nextbtn z-[100000] pointer-events-auto w-1/2 h-full text-black next text-4xl"
-                        @click="next"
-                        aria-label="Next"
-                      >
-                        >
-                      </button>
-              </div> -->
+
+
+      <div
+      class="mobileslugtitle hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
+    >
+      <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button>
+    </div>
+
+
+
       <!-- pt-28 -->
-      <div class="bottom-div p-2 xl:pt-[18rem] 2xl:pt-[14rem]">
-        <div
+      <div v-if="!isGalleryExpanded" class="bottom-div p-2 xl:pt-[18rem] 2xl:pt-[14rem]">
+    <div class="flex">
+      <div
           v-if="project"
           class="ml-auto text-lg uppercase lg:text-xl md:text-xl font-heading w-full flex justify-center"
         >
@@ -43,11 +32,16 @@
               class="projectetxt inner-div pl-[1.5rem] textppad pb-5 top-[0vh] w-screen projecttextmb"
               id="titleInnerDiv"
             >
-              <div class="mobileslugtitle md:hidden flex">
+              <div class="mobileslugtitle mbback md:hidden flex">
                 <button class="z-50 pb-8 pt-0" @click="goBack">Back</button>
               </div>
 
-              <div class="pb-5 mobileslugtitle">{{ project.title }}</div>
+              <div class="pb-5 mobileslugtitle ptitle">{{ project.title }}</div> 
+
+
+
+   
+
 
               <div
                 v-if="project.filmtype === 'feature'"
@@ -78,29 +72,55 @@
                   class="projecttextarea justify-between md:justify-normal flex normal-case"
                   v-for="meta in project.meta"
                 >
-                  <!-- v-if="meta.title" uppercase -->
-                  <div class="projecttextareati md:w-1/6">
-                    <a
-                      :href="meta.link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="custom-link"
-                      >{{ meta.title }}</a
-                    >
-                    <!-- <span v-if="meta.title"> : </span> -->
+
+
+
+                <!-- md:w-1/6 -->
+                  <div v-if="meta.link" class="projecttextareati md:w-[220px]">
+  <!-- Check if meta.link exists -->
+
+    <a
+      :href="meta.link"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="custom-link"
+    >{{ meta.title }}</a>
+    <!-- Render meta.content inside the link if meta.link exists -->
+    
                   </div>
-                  <!-- brake -->
-                  <!-- <br> pt-5-->
-                  <div class="pb-1 mobileprotext">
-                    <a
+
+  <div v-if="meta.link" class="pb-1 mobileprotext">
+                    <a 
                       :href="meta.link"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="custom-link"
                       >{{ meta.content }}</a
                     >
+     
                   </div>
+  <!-- If meta.link doesn't exist, render meta.title and meta.content without links -->
+  <template v-else>
+    <div class="projecttextareati  md:w-[220px]">
+                    <p
+                    
+                      >{{ meta.title }}</p
+                    >
+                  </div>
+               
+                  <div class="pb-1 mobileprotext">
+                    <p
+                     
+                      >{{ meta.content }}</p
+                    >
+                  </div>
+  </template>
+
+
+                  
                 </div>
+
+     
               </div>
               <div v-if="project.location" class="pt-3">
                 <div class="flex flex-col normal-case">
@@ -111,15 +131,21 @@
           </div>
         </div>
 
+
+        <!-- <div
+      class="mobileslugtitle hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
+    >
+      <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button>
+    </div> -->
+    </div>
         <!-- non scroll copy -->
         <!-- pt-48 -->
         <div
-          class="md:pr-6 md:w-7/16 scroll-container resize-animation"
-          ref="scrollContainer"
+        class="outscrollcont"
         >
-          <!-- md:p-5             :style="{ width: `calc(${slide.imageWidth}vw - 20px)` }"
--->
 
+        <div class="md:pr-6 md:w-7/16 scroll-container resize-animation"
+          ref="scrollContainer">
           <div
             v-for="(slide, index) in project.slider"
             :key="slide._key"
@@ -130,32 +156,33 @@
               :key="image._key"
               @click="openImageModal(index)"
               style="cursor: pointer"
+              class="picssizeworks"
             >
               <MediaImage
                 ref="scrollContainer resize-animation"
                 :src="image.image.asset._ref"
                 v-if="image.image"
                 class="scrollcost"
-                :style="{ width: `30vw`, height: `30vh` }"
+               
               >
               </MediaImage>
               <MediaVideo
                 :id="image.video.id"
+                class="mbvidworksp"
                 :active="realIndex == index ? true : false"
                 v-else-if="image.video.id"
-                :style="{ width: `30vw`, height: `30vh` }"
+                
                 :poster="`https://image.mux.com/${
                   image.video.id
                 }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                class="scrollcost resize-animation object-contain object-top w-auto h-full"
-              ></MediaVideo>
+              ></MediaVideo> 
               <!-- Display YouTube Video -->
               <iframe
                 v-else-if="image.youtubeUrl"
                 :src="getYouTubeEmbedUrl(image.youtubeUrl)"
                 frameborder="0"
                 allowfullscreen
-                :style="{ width: `30vw`, height: `30vh` }"
+                
                 class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
               <!-- Display Vimeo Video -->
@@ -164,11 +191,13 @@
                 :src="getVimeoEmbedUrl(image.vimeoUrl)"
                 frameborder="0"
                 allowfullscreen
-                :style="{ width: `30vw`, height: `30vh` }"
+                
                 class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
             </figure>
           </div>
+        </div>
+
         </div>
       </div>
 
@@ -237,7 +266,7 @@
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
-                        class="overlaydiv flex flex-col flex-1 w-full h-full"
+                        class="overlaydiv flex flex-col flex-1  h-full"
                         :class="
                           image.padding
                             ? image.padding == 'medium'
@@ -273,7 +302,7 @@
                             pointerEvents: 'auto',
                           }"
                           @click="handleVideoClick(image.video.id)"
-                          class="gallery-image gallery-imagevid relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                          class="gallery-imagevid relative  object-center z-[10000000] h-auto p-4 my-auto"
                         ></MediaVideoPlay>
                         <!-- Display YouTube Video -->
                         <iframe
@@ -282,7 +311,7 @@
                           frameborder="0"
                           :style="{}"
                           allowfullscreen
-                          class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                          class="gallery-imagevid relative object-center z-[10000000]  h-auto p-4 my-auto"
                         ></iframe>
                         <!-- Display Vimeo Video -->
                         <iframe
@@ -291,18 +320,52 @@
                           frameborder="0"
                           allowfullscreen
                           :style="{}"
-                          class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                          class="gallery-imagevid relative  object-center z-[10000000]  h-auto p-4 my-auto"
                         ></iframe>
                       </figure>
                     </div>
+
+  
                   </div>
                 </div>
+
+
+     
               </section>
+<!-- 
+              <div class="footcon" v-if="isGalleryExpanded">
+          <div class=" w-full flex justify-center">
+            <div
+              class="copyrtex items-baseline  w-[96.5vw]  justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+            >
+              <div
+                class="titleTextt flex  items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
+              >
+              <div class="animate-hover text-[1.2rem] pr-5">   
+                 <p
+                 v-if="project"
+                    >{{ project.title }}</p
+                  >
+                  </div
+                >
+                <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p>
+              </div>
+           
+              <p class=" text-[1.2rem] text-end titleTextt">Coralie Rose Casting</p>
+            </div>
+          </div>
+        </div> -->
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
+
+    
   </div>
 </template>
 <script>
@@ -579,6 +642,27 @@ export default {
   pointer-events: none !important;
 } */
 
+.footcon{
+  position: absolute;
+    /* position: relative; */
+    bottom: 0vh;
+    z-index: 10000;
+    width: 100vw;
+    color: black;
+}
+
+
+.picssizeworks{
+  /* width: 32vw; */
+  /* width: 32.1vw; */
+  width: 31.9vw;
+    height: 30vh;
+    height: 33vh;
+    overflow: hidden;
+}
+
+
+
 .custom-link {
   cursor: pointer;
 }
@@ -591,21 +675,21 @@ export default {
 .mobileslugtitle {
   font-size: 4.25rem;
   line-height: 2.5rem;
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   z-index: 100000;
 }
 
 .mobileslugtitle2 {
   /* font-size: 2.25rem ; */
   line-height: 1.5rem;
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   z-index: 100000;
 }
 
 .mobileslugtitle3 {
   /* font-size: 1.25rem ; */
   /* line-height: .5rem ; */
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   z-index: 100000;
 }
 
@@ -616,6 +700,7 @@ export default {
   }
 
   .mobileslugtitle2 {
+
     font-size: 4.25rem !important;
     line-height: 3.5rem !important;
   }
@@ -920,6 +1005,10 @@ button .circle:hover {
   display: none;
 }
 
+.projecttextarea{
+  font-family: Atlas Grotesk, sans-serif !important;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* Your tablet-specific styles here */
   svg {
@@ -933,7 +1022,32 @@ button .circle:hover {
   }
 }
 
+.mbback{
+  display: none;
+  }
+
+  .ptitle{
+    width: 95vw;
+    /* font-size: 5rem; */
+    display: flex;
+    font-family: Atlas Grotesk, sans-serif !important;
+    /* justify-content: center; */
+  }
+
 @media (max-width: 768px) {
+  .mbback{
+display:contents;
+  }
+
+  .ptitle{
+    width: auto;
+    font-size: 3.25rem !important;
+  }
+
+  .mobileslugtitle2 {
+  font-size: 2.25rem ;
+  }
+
   .projecttextarea {
     font-size: 1.7rem;
     line-height: 1.7rem;
@@ -1102,6 +1216,8 @@ button .circle:hover {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  /* justify-content: end; */
 }
 
 .overlaycont {
@@ -1112,12 +1228,19 @@ button .circle:hover {
   /* width: 98vw;
   width: 100vw; */
   /* width: 98vw !important; */
+  width: 100vw; 
   white-space: nowrap;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
+  /* justify-content: center; */
   /*  justify-content: space-between; */
+}
+
+.outscrollcont{
+  display: flex;
+    justify-content: center;
 }
 
 .insidescrollcont {
@@ -1247,7 +1370,7 @@ button .circle:hover {
   font-size: 3.25rem;
   font-size: 2rem;
   /* line-height: 2.5rem; */
-  font-family: "GTWalsheimbb";
+  /* font-family: "GTWalsheimbb"; */
   /* font-size: 14.21px !important; */
 }
 
@@ -1255,7 +1378,6 @@ button .circle:hover {
   background: none;
   border: none;
   color: rgb(0, 0, 0);
-  font-size: 1.2rem;
   text-transform: uppercase;
   cursor: pointer;
   z-index: 99999 !important;
@@ -1269,6 +1391,8 @@ button .circle:hover {
   /* top: -20vh; */
   /* top: 3vh; */
   font-size: 2rem;
+  font-size: 1.7rem;
+  /* font-family: "GTWalsheim"; */
   /* line-height: 2.5rem; */
   /* font-family: "GTWalsheimbb"; */
   /* font-size: 14.21px !important; */
@@ -1279,9 +1403,12 @@ button .circle:hover {
 }
 
 .backc {
-  z-index: 9 !important;
+  z-index: 0 !important;
   position: relative;
   text-transform: uppercase;
+  position: absolute;
+    /* top: 5vh; */
+    padding-top: 14rem;
 }
 
 iframe .gallery-image {
@@ -1362,10 +1489,27 @@ button {
   max-width: 100vw;
   width: calc(55.33vw - 20px);
   width: auto;
+  /* width: 27vw; */
   align-items: center;
   height: 90vh;
   pointer-events: none !important;
 }
+
+.gallery-imagevid{
+  cursor: grab !important;
+padding-top: 15vh;
+padding-bottom: 20vh;
+max-width: 90vw;
+/* width: 27vw; */
+/* width: auto; */
+width: 70vw;
+width: 93vh;
+align-items: center;
+height: 95vh;
+pointer-events: none !important;
+}
+
+
 
 /* .gallery-image[data-v-3ff1f924]{
   width: calc(15.33vw - 20px);
@@ -1431,6 +1575,8 @@ button {
 
 .bottom-div {
   padding-top: 14rem;
+  min-height: 100vh;
+  /* padding-bottom: 5rem; */
   transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
 }
 
@@ -1438,6 +1584,10 @@ button {
   overflow-x: hidden;
   max-width: 100vw !important;
 } */
+
+.footerp {
+  /* background-color: white; */
+  }
 
 @media screen and (max-width: 1023px) {
   /* Your CSS styles for screens smaller than 1024px go here */
@@ -1460,6 +1610,11 @@ button {
 }
 
 @media (max-width: 768px) {
+  .mbvidworksp{
+    width: 92vw !important;
+    height: auto !important;
+}
+
   .scrollcost {
     width: 100vw !important;
   }
@@ -1470,7 +1625,27 @@ button {
 
   .bottom-div {
     padding-top: 10rem;
+    z-index: 0;
+    /* padding-bottom: 10rem; */
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
+  }
+
+  .footerp {
+    position: relative;
+    bottom: 0;
+  }
+
+  .picssizeworks{
+    pointer-events: none;
+  }
+
+  .picssizeworks iframe{
+    pointer-events: all;
+  }
+
+
+  .picssizeworks{
+    height: auto;
   }
   /*   display: block;
     position: absolute; */
@@ -1500,10 +1675,11 @@ button {
     padding-bottom: 0.25rem;
     font-size: 2.25rem;
     line-height: 2.5rem;
+    line-height: 3rem;
   }
 
   .projecttextmb {
-    width: fit-content;
+    width: 90vw;
     /* font-family: "GTWalsheimb"; */
     /* padding-top: 7rem; */
     padding-left: 1vw;
@@ -1568,6 +1744,7 @@ button {
   .mobiletitle {
     position: relative;
     /* top: 17vw; */
+    width: auto;
     background: 0;
     height: fit-content;
     z-index: 1;

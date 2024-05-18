@@ -10,7 +10,7 @@
     }
     &.small {
       figure {
-        @apply h-auto;
+        @apply h-[55vh];
       }
     }
     .item {
@@ -20,8 +20,8 @@
       }
       img {
         /* max-w-full */
-        @apply w-full max-w-full h-auto ;
-        /* @apply w-[30vw] h-auto ; */
+        /* @apply w-full max-w-full h-auto ; */
+        @apply w-[15vw] h-auto ;
 
       }
       figure {

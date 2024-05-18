@@ -1,340 +1,215 @@
 <template>
   <!-- pt-40 -->
   <div class="pt-28 md:pt-0">
-
-    <div class="containerhome absolute " :style="{ transform: containerTransform }">
-      <div class="w-[100vw]  h-screen">
-        <button
-          class=" z-20 top-[2vh] fixed left-[45vw] text-[white]"
-          @click="TOGGLE_MENU()"
-        >
-          <!-- Hamburger Icon -->
-          <svg
-            v-if="!menu"
-            class="h-[4rem] w-[4rem]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path stroke-width="1.5" d="M2 12h20M2 7h20M2 17h20"></path>
-          </svg>
-          <!-- X Icon -->
-          <svg
-            v-else
-            class="h-[4rem] w-[4rem]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-        <div class="absolute z-20 top-[40vh] w-[50vw]">
-          <div v-if="menu" class="flex flex-col justify-center">
-          
-
-            <a
-              v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] pb-5"
-              href="./"
-              rel="noopener noreferrer"
-            >
-            Home
-            </a>
-
-            <a
-              v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] pb-5"
-              href="./poems"
-              rel="noopener noreferrer"
-            >
-              Poems
-            </a>
-
-            <button
-              class="abouttexttitle uppercase text-[1.8rem] leading-[1.5rem] pb-5 text-[white]"
-              @click="transitionToPoems"
-            >
-            Work
-            </button>
-
-            <a
-              v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] "
-              href="./"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Store
-            </a>
-
-            <p
-              class="presssectextlink mt-10 flex justify-center text-[1.8rem] text-[white] leading-[4.5rem]"
-            >
-              Stay up to date
-            </p>
-
-            <div class="social-icons text-center">
-              <a
-                href="https://www.facebook.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[2] p-5 text-white fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="https://twitter.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[2] p-5 text-white fab fa-twitter"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[2] p-5 text-white fab fa-instagram"></i>
-              </a>
-            </div>
-          </div>
-
-          <button
-            class="absolute left-[93vw] top-[-37vh] text-[black] uppercase text-[1.8rem] leading-[1.5rem] pb-5"
-            @click="goBack"
-          >
-            Home
-          </button>
-        </div>
-
-        <!-- <Home v-if="currentSection === 'home'" /> -->
-        <div class="w-screen h-screen overflow-hidden flex justify-center">
+    <!-- <LenisComponent />  to="#about" -->
+    <div class="w-screen h-screen overflow-hidden flex justify-center">
     
-    <!-- home img -->
-    <div v-if="home && home.sections4"  class="homeimgsize">
-      <div v-for="section in home.sections4" :key="section._key">
-        <MediaImage
-          :size="section.image4.size"
-          :aspect="section.image4.aspect"
-          :src="section.image4.image4"
-          v-if="section.image4.image4"
-          class="landingimg max-h-full object-cover"
-        ></MediaImage>
-        <MediaVideo
-          :id="section.video.id"
-          v-if="section.video.id"
-          class="md:max-h-full min-w-full object-cover"
-        ></MediaVideo>
-        <!-- Display YouTube Video -->
-        <iframe
-          v-else-if="section.youtubeUrl"
-          :src="getYouTubeEmdedUrl(section.youtubeUrl)"
-          frameborder="0"
-          allowfullscreen
-          class="md:max-h-full min-w-full object-cover pointer-events-none"
-        ></iframe>
-        <!-- Display Vimeo Video width="560" height="315"-->
+      <!-- home img -->
+      <div v-if="home && home.sections4"  class="homeimgsize">
+        <div v-for="section in home.sections4" :key="section._key">
+          <MediaImage
+            :size="section.image4.size"
+            :aspect="section.image4.aspect"
+            :src="section.image4.image4"
+            v-if="section.image4.image4"
+            class="landingimg max-h-full object-cover"
+          ></MediaImage>
+          <MediaVideo
+            :id="section.video.id"
+            v-if="section.video.id"
+            class="md:max-h-full min-w-full object-cover"
+          ></MediaVideo>
+          <!-- Display YouTube Video -->
+          <iframe
+            v-else-if="section.youtubeUrl"
+            :src="getYouTubeEmdedUrl(section.youtubeUrl)"
+            frameborder="0"
+            allowfullscreen
+            class="md:max-h-full min-w-full object-cover pointer-events-none"
+          ></iframe>
+          <!-- Display Vimeo Video width="560" height="315"-->
 
-        <iframe
-          v-else-if="section.vimeoUrl"
-          :src="getVimeoEmdedUrl(section.vimeoUrl)"
-          frameborder="0"
-          allowfullscreen
-          class="max-w-full md:min-h-screen w-screen object-cover pointer-events-none"
-        ></iframe>
+          <iframe
+            v-else-if="section.vimeoUrl"
+            :src="getVimeoEmdedUrl(section.vimeoUrl)"
+            frameborder="0"
+            allowfullscreen
+            class="max-w-full md:min-h-screen w-screen object-cover pointer-events-none"
+          ></iframe>
+        </div>
+        
       </div>
-      
-    </div>
-
 
 
 
 
  
+   
 
-      <!-- about text -->
-      <div  >
-      <!-- md:pb-5 sm:pb-5  -->
-      <div v-if="home && home.sections" class="pb-0 anchor" id="about">
-        <!-- about -->
-        <span
-          class="aboutsec text-4xl"
-          v-for="section in home.sections"
-          :key="section._key"
-        >
-          <div
-            class="flex flex-col items-center pb-[5vw] "
-            v-if="section.title"
+        <!-- about text -->
+        <div  >
+        <!-- md:pb-5 sm:pb-5  -->
+        <div v-if="home && home.sections" class="pb-0 anchor" id="about">
+          <!-- about -->
+          <span
+            class="aboutsec text-4xl"
+            v-for="section in home.sections"
+            :key="section._key"
           >
-        
+            <div
+              class="flex flex-col items-center pb-[5vw] "
+              v-if="section.title"
+            >
+          
 
-            <!-- about text -->
-            <div  class="md:flex flex-col p-10 pb-0 md:justify-between">
-  
-              <!-- <Header /> -->
+              <!-- about text -->
+              <div  class="md:flex flex-col p-10 pb-0 md:justify-between">
+    
+                <!-- <Header /> -->
 
-              <div class="p-10">
-                <!-- <p
-                  class="abouttexttitle text-center uppercase text-[6rem] leading-[5.5rem] pb-5"
-                >
-                  Chisara Agor
-                </p> -->
-
-                <!-- press -->
-                <div
-                  v-if="home.sections3"
-                  class="presssecmd text-center justify-center md:pt-0 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
-                >
-                  <div
-                    v-for="sections3 in home.sections3"
-                    :key="sections3._key"
-                    class="md:p-5 presssecinnermd"
+                <div class="p-10">
+                  <!-- <p
+                    class="abouttexttitle text-center uppercase text-[6rem] leading-[5.5rem] pb-5"
                   >
-                    <div class="presssec">
-                      <!-- <p
-                        v-if="sections3.title3"
-                        class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
-                      >
-                        <span>{{ sections3.title3 }}</span>
-                      </p> -->
-                      <Richtext
-                        class="presssectext uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]"
-                        :blocks="sections3.content3"
-                        v-if="sections3.content3"
-                      ></Richtext>
-                      <NuxtLink
-                        v-if="sections3.title3"
-                        to="/works"
-                        class="presssectextlink justify-start text-[3.5rem] leading-[4.5rem]"
-                      >
-                        <span>view here</span>
-                      </NuxtLink>
+                    Chisara Agor
+                  </p> -->
+
+                  <!-- press -->
+                  <div
+                    v-if="home.sections3"
+                    class="presssecmd text-center justify-center md:pt-0 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                  >
+                    <div
+                      v-for="sections3 in home.sections3"
+                      :key="sections3._key"
+                      class="md:p-5 presssecinnermd"
+                    >
+                      <div class="presssec">
+                        <p
+                          v-if="sections3.title3"
+                          class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
+                        >
+                          <span>{{ sections3.title3 }}</span>
+                        </p>
+                        <Richtext
+                          class="presssectext uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]"
+                          :blocks="sections3.content3"
+                          v-if="sections3.content3"
+                        ></Richtext>
+                        <NuxtLink
+                          v-if="sections3.title3"
+                          to="/works"
+                          class="presssectextlink justify-start text-[3.5rem] leading-[4.5rem]"
+                        >
+                          <span>view here</span>
+                        </NuxtLink>
+                      </div>
+                   
                     </div>
-                 
                   </div>
+
+              
+                  <div v-if="home.grid2" class=" flex justify-center">
+                  <Grid2
+                    class="imagemarquee pl-[2rem]"
+                    size="small"
+                    :items="home.grid2"
+                  ></Grid2>
                 </div>
 
-            
-                <div v-if="home.grid2" class=" flex justify-center">
-                <Grid2
-                  class="imagemarquee pl-[2rem]"
-                  size="small"
-                  :items="home.grid2"
-                ></Grid2>
-              </div>
 
-
-                <p
-                  class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pt-20 pb-5"
-                >
-                  About Chisara Agor
-                </p>
-
-                <Richtext
-                  class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-                <Richtext
-                  class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-
-                    <!-- contct -->
-                <!-- Display the About Image    v-if="section.image.image"-->
-                <div id="contact" class="anchor">
-                  <div
-                    v-if="home.sections2"
-                    class="contact-section  text-center contactsecmd pt-40 flex justify-between"
+                  <p
+                    class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pt-20 pb-5"
                   >
-                    <div class="contactsecall border-t-[.2rem] border-solid  border-black md:pt-0">
+                    About Chisara Agor
+                  </p>
 
-                      <p
-                  class="abouttexttitle uppercase text-[1.5rem] pt-5 leading-[1.5rem] pb-5"
-                >
-                  Contact
-                </p>
+                  <Richtext
+                    class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
+                    :blocks="section.content"
+                    v-if="section.content"
+                  ></Richtext>
 
-                      <div class="md:flex md:pt-0">
-                        <div class="pt-5">
-                          <div
-                            v-for="sections2 in home.sections2"
-                            :key="sections2._key"
-                            class="contacttextmd"
-                          >
+                  <Richtext
+                    class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
+                    :blocks="section.content"
+                    v-if="section.content"
+                  ></Richtext>
+
+
+                      <!-- contct -->
+                  <!-- Display the About Image    v-if="section.image.image"-->
+                  <div id="contact" class="anchor">
+                    <div
+                      v-if="home.sections2"
+                      class="contact-section  text-center contactsecmd pt-40 flex justify-between"
+                    >
+                      <div class="contactsecall border-t-[.2rem] border-solid  border-black md:pt-0">
+
+                        <p
+                    class="abouttexttitle uppercase text-[1.5rem] pt-5 leading-[1.5rem] pb-5"
+                  >
+                    Contact
+                  </p>
+
+                        <div class="md:flex md:pt-0">
+                          <div class="pt-5">
                             <div
-                              v-if="sections2.content2"
-                              class="contactsec  text-[1.4rem] leading-[1.4rem]"
+                              v-for="sections2 in home.sections2"
+                              :key="sections2._key"
+                              class="contacttextmd"
                             >
-                              <Richtext
-                                class=" text-left contactinner"
-                                :blocks="sections2.content2"
+                              <div
                                 v-if="sections2.content2"
-                              ></Richtext>
+                                class="contactsec  text-[1.4rem] leading-[1.4rem]"
+                              >
+                                <Richtext
+                                  class=" text-left contactinner"
+                                  :blocks="sections2.content2"
+                                  v-if="sections2.content2"
+                                ></Richtext>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                    
+                      
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Add a button to toggle the collapsible section -->
-              <button
-                @click="toggleCollapsible"
-                v-if="!isCollapsibleOpen"
-                class="contents md:hidden collapsible-button"
-              >
-                ... view more
-                <!-- <i :class="arrowIconClass"></i> -->
-              </button>
+                <!-- Add a button to toggle the collapsible section -->
+                <button
+                  @click="toggleCollapsible"
+                  v-if="!isCollapsibleOpen"
+                  class="contents md:hidden collapsible-button"
+                >
+                  ... view more
+                  <!-- <i :class="arrowIconClass"></i> -->
+                </button>
 
-              <!-- <div class="flex justify-end"> -->
-              <!-- about textt -->
-              <div v-if="isCollapsibleOpen" class="collapsible-section">
-                <Richtext
-                  class="abtextmbopen md:p-5 text-[1.7rem] leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
+                <!-- <div class="flex justify-end"> -->
+                <!-- about textt -->
+                <div v-if="isCollapsibleOpen" class="collapsible-section">
+                  <Richtext
+                    class="abtextmbopen md:p-5 text-[1.7rem] leading-[1.7rem]"
+                    :blocks="section.content"
+                    v-if="section.content"
+                  ></Richtext>
+                </div>
               </div>
+              <!-- </div> -->
             </div>
-            <!-- </div> -->
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
+
+      <!-- <p class="imgtext pb-5 ">
+        COPYRIGHT ©2024 CHISARA AGOR
+              </p> -->
+      <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
     </div>
-
-    <!-- <p class="imgtext pb-5 ">
-      COPYRIGHT ©2024 CHISARA AGOR
-            </p> -->
-    <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
-  </div>
-      </div>
-
-   
-   
-
-
-    <div class="new-section" :style="{ transform: newSectionTransform }">
-        <!-- <Poems v-if="currentSection === 'poems'" /> -->
-        <Works/>
-
-      </div>
-    </div>
-
-
   </div>
 </template>
 
@@ -348,9 +223,6 @@ import Marqueec from "~/components/Marqueec.vue";
 import Header from "~/components/layout/Header.vue";
 import LenisComponent from "~/components/LenisComponent.vue";
 import Lenis from "@studio-freight/lenis";
-import Works from "~/pages/works.vue";
-import Poemspg from "~/components/Poems.vue";
-import Home from "~/pages/index.vue";
 // import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -361,9 +233,6 @@ export default {
     Marqueec,
     LenisComponent,
     Header,
-    Works,
-    Home,
-    Poemspg,
   },
 
   data() {
@@ -382,9 +251,6 @@ export default {
       activeStyle: { textDecoration: "none" },
       isCollapsibleOpen: false,
       isGlitching: false,
-      currentSection: 'home',
-      containerTransform: "translateX(0)",
-      newSectionTransform: "translateX(100vw)",
     };
   },
 
@@ -578,18 +444,6 @@ export default {
         transform: `translateY(${offset})`,
       };
     },
-    goBack() {
-      this.currentSection = 'home';
-      this.containerTransform = "translateX(0)";
-      this.newSectionTransform = "translateX(100vw)";
-    },
-    transitionToPoems() {
-      // Move the container to the left and bring in the Poems section
-      this.containerTransform = "translateX(-50vw)";
-      this.newSectionTransform = "translateX(0)";
-      // Set the current section to 'poems'
-      this.currentSection = 'poems';
-    },
   },
   computed: {
     ...mapState([ "menu"]),
@@ -606,35 +460,6 @@ export default {
 </script>
 
 <style scoped>
-
-.abouttexttitle {
-  text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-}
-
-.containerhome {
-  display: flex;
-  width: 200vw; /* Double the width for both sections */
-  height: 100vh;
-  transition: transform 0.5s ease-in-out;
-  overflow: hidden;
-}
-
-.new-section {
-  width: 50vw;
-  height: 100vh;
-  transition: transform 0s ease-in-out;
-  overflow: hidden;
-}
-
-.presssectextlink {
-  /* padding-top: 1rem; */
-  text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-}
-
 .imgtext {
   position: absolute;
   top: 50%;
@@ -899,7 +724,7 @@ export default {
 .presssectext {
   /* font-family: "GTWalsheiml"; */
   /* text-transform: none !important; */
-  /* color: rgb(55, 28, 191); */
+  color: rgb(55, 28, 191);
   display: flex;
   justify-content: space-between !important;
   padding-top: 1rem;

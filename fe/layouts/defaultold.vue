@@ -8,10 +8,9 @@
     </transition>
 
     <transition name="fade">
-    <!-- <LayoutHeader
+    <LayoutHeader
       :class="
         $nuxt.$route.name == 'index' ||
-        $nuxt.$route.name == 'home' ||
         $nuxt.$route.name == 'index-bak' ||
         $nuxt.$route.name == 'about' ||
         $nuxt.$route.name == 'work' || 
@@ -19,7 +18,7 @@
           ? ''
           : ' md:flex'
       "
-    ></LayoutHeader> -->
+    ></LayoutHeader>
   </transition>
  
     <!-- <LayoutHeaderMin
