@@ -1,50 +1,43 @@
 <template>
   <client-only>
     <!-- class="marquee2" -->
-    <Marqueec>
-    <div class="images_marquee_wrapper ">
+    <!-- <Marqueec> -->
+      <div class="images_marquee_wrapper " ref="scrollContainer" @scroll="handleScroll">
       <div
         v-masonry
         column-width=".item"
         item-selector=".item"
-        class="w-full marquee2"
+        class="marquee "
         :class="size"
         horizontal-order="true"
       >
-      
         <div
           v-masonry-tile
-          class="item marquee2"
+          class="item"
           v-for="item in items"
           :key="item._key"
         >
         
-          <figure class="md:p-20 p-10">
+          <figure class="md:p-10 p-3 pt-10">
             <NuxtLink
               v-if="item.reference.slug"
               :to="`/work/${item.reference.slug}`"
             >
               <span>
                 <figure                     :style="{
-   height: `80vh`,
+   height: `80vh`, 
  }">
                   <MediaImage
                     :size="item.image.size"
                     :aspect="item.image.aspect"
-                    :style="{
-   
-   height: `inherit`,
- }"
+                    class="imgmarkgrsize"
                     :src="item.image.image"
                     v-if="item.image.image"
                   ></MediaImage>
                   <MediaVideo
                   class="vidsize"
                     :id="item.video.id"
-                    :style="{
-   
-   height: `inherit`,
- }"
+                    
                     v-if="item.video.id"
                   ></MediaVideo>
                                <!-- Render YouTube Video -->
@@ -52,10 +45,7 @@
           v-else-if="item.youtubeUrl"
           :src="getYouTubeEmbedUrl(item.youtubeUrl)"
           frameborder="0"
-          :style="{
-   
-   height: `inherit`,
- }"
+          
           allowfullscreen
           class="vidsize"
         ></iframe>
@@ -65,10 +55,7 @@
           v-else-if="item.vimeoUrl"
           :src="getVimeoEmbedUrl(item.vimeoUrl)"
           frameborder="0"
-          :style="{
-   
-   height: `inherit`,
- }"
+          
           allowfullscreen
           class="vidsize"
         ></iframe>
@@ -84,18 +71,14 @@
                 <MediaImage
                   :size="item.image.size"
                   :aspect="item.image.aspect"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+                  class="imgmarkgrsize"
                   :src="item.image.image"
                   v-if="item.image.image"
                 ></MediaImage>
                 <MediaVideo
                 class="vidsize"
                   :id="item.video.id"
-                  :style="{     
-                          height: `100vh`,
-                        }"
+                  
                   v-if="item.video.id"
                 ></MediaVideo>
                              <!-- Render YouTube Video -->
@@ -127,8 +110,9 @@
                 <MediaImage
                   :size="item.image.size"
                   :aspect="item.image.aspect"
+                  class="imgmarkgrsize"
                   :style="{     
-                          height: `100vh`,
+                          
                           padding: `5vw !important`,
                         }"
                   :src="item.image.image"
@@ -138,7 +122,7 @@
                   :id="item.video.id"
                   class="vidsize"
                   :style="{     
-                          height: `100vh`,
+                          
                           padding: `5vw !important`,
                         }"
                   v-if="item.video.id"
@@ -172,9 +156,10 @@
     
       </div>
     </div>
-  </Marqueec>
+  <!-- </Marqueec> -->
   </client-only>
 </template>
+
 
 <script>
 import { mapMutations, mapState } from 'vuex';
@@ -184,20 +169,26 @@ export default {
   data() {
     return {
       project: false,
+      containerClass: "flex flex-col w-full h-full",
+      imageClass: "contain-image",
       isDesktop: false,
+      scrollInterval: null, // Initialize scroll interval variable
     };
   },
   computed: {
     ...mapState(['activeProject', 'activeTalent']),
   },
   mounted() {
+    this.redraw();
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener('resize', this.handleResize);
+    // Start auto-scrolling the container
+    this.startAutoScroll();
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.scrollInterval);
   },
-
   methods: {
     ...mapMutations(['SET_ACTIVE_PROJECT', 'SET_ACTIVE_TALENT']),
     handleResize() {
@@ -208,7 +199,41 @@ export default {
         this.$redrawVueMasonry();
       }
     },
-    getYouTubeEmbedUrl(youtubeUrl) {
+    handleScroll(event) {
+      const scrollContainer = this.$refs.scrollContainer;
+      // Reverse the scroll direction by subtracting the scroll position from the maximum scroll width
+      const distanceFromRight = scrollContainer.scrollWidth - (scrollContainer.scrollLeft + scrollContainer.clientWidth);
+      const fetchThreshold = 50; // Pixels from the right
+
+      // If the distance from the right is greater than the fetch threshold, fetch more data
+      if (distanceFromRight < fetchThreshold) {
+        this.fetchMoreData();
+      }
+    },
+    fetchMoreData() {
+      // Assuming items is an array, you can simply append the existing items to itself
+      // This will repeat the content
+      this.items = this.items.concat(this.items);
+      // Fetch more data here and append it to the existing items array
+      // Example:
+      // this.$axios.get('/api/more-items')
+      //   .then(response => {
+      //     this.items = this.items.concat(response.data);
+      //   })
+      //   .catch(error => {
+      //     console.error('Error fetching more data:', error);
+      //   });
+    },
+    startAutoScroll() {
+      // Define the interval duration in milliseconds
+      const intervalDuration = 30; // Scroll every 10 milliseconds (adjust as needed)
+
+      this.scrollInterval = setInterval(() => {
+        const scrollContainer = this.$refs.scrollContainer;
+        scrollContainer.scrollLeft += 1; // Scroll right by 1 pixel
+      }, intervalDuration);
+    },
+    getYouTubeEmbedUrl(youtubeUrl) { 
       // Extract YouTube video ID from the URL
       const videoId = youtubeUrl.split("v=")[1];
       // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
@@ -242,29 +267,18 @@ export default {
 
 <style scoped>
 
+.imgmarkgrsize{
+    width: -webkit-fill-available; /* For Safari */
+    width: fill-available; /* For other browsers */
+    height: 40vh;
+    width: auto;
+    max-width: none;
+    display: flex;
+}
+
 .img{
   padding: 5vw !important;
 }
-/* @media (min-width: 768px){
-  .masonry.large .item.double {
-    height: 55vh;
-
-}
-}
-
-.marquee-container {
-  white-space: nowrap;
-  animation: marquee 20s linear infinite; 
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-} */
 
 
 
@@ -275,12 +289,16 @@ export default {
 }
  
 .images_marquee_wrapper {
-  height: 90vh;
+  height: 85vh;
+  height: 50vh;
     padding-bottom: 5vh;
   /* justify-content: center; */
   max-width: 100%;
+  width: 80vw;
+  overflow-y: hidden;
+    overflow-x: scroll;
   /* height: 100vh ; */
-  display: flex;
+  /* display: flex; */
   /* -webkit-animation: 0.75s ease 0s normal forwards 1 fadein;
   animation: 0.75s ease 0s normal forwards 1 fadein; */
   /* z-index: -1 !important; */
@@ -295,24 +313,14 @@ export default {
 }
 
 .marquee2 {
-  /* width: 40vw; */
   display: flex;
   gap: 0;
   /* animation: marquee2 500s linear infinite; */
 }
 
-.marquee2.paused {
-  animation-play-state: paused;
-}
 
-@keyframes marquee2 {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-3400%, 0, 0);
-  }
-}
+
+
 
 .vidsize{
   max-width: fit-content !important;
@@ -336,17 +344,38 @@ img{
 
 .images_marquee_wrapper{
   /* height: auto !important; */
-
-  height: 40vh;
+  width: 100vw;
+  height: 30vh;
   /* height: 29vh !important; */
   /* animation: none !important; */
 }
 }
-/* .item {
-  height: 100vh; 
-  box-sizing: border-box;
-  flex: 0 0 auto; 
-  margin-right: 16px; 
+
+
+
+.images_marquee_wrapper {
+  /* overflow: hidden; */
+  overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.marquee {
+  display: flex;
+  /* animation: marquee-scroll 100s linear infinite; */
+}
+
+.item {
+  flex: 0 0 auto;
+}
+
+/* @keyframes marquee-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 } */
+
 
 </style>

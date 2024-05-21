@@ -10,22 +10,21 @@
 
 
       <div
-      class="presssectext p-5 font-bold flex justify-end uppercase  md:pb-5 text-[6.5rem] leading-[5.5rem]"
+      class=" p-5 font-bold flex justify-end uppercase  md:pb-5    text-[large]  left-[90vw]  md:flex "
     >
-      <!-- <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button> -->
       <a
-              class="z-50 pb-8 pt-0"
+              class="z-50 "
               href="./../"
               rel="noopener noreferrer"
             >
             CHISARA AGOR
             </a>
-    </div>
+    </div> 
 
 
 
       <!-- pt-28 -->
-      <div v-if="!isGalleryExpanded" class="bottom-div p-2 ">
+      <div  class="bottom-div p-2 ">
     <div class="flex">
       <div
           v-if="project"
@@ -36,7 +35,7 @@
             <!-- text-[14.21px] -->
             <!-- <About/> md:w-4/6-->
             <div
-              class="projectetxt inner-div pl-[1.5rem] textppad pb-5 top-[0vh] w-screen projecttextmb"
+              class="projectetxt inner-div textppad pb-5 top-[0vh] w-screen projecttextmb"
               id="titleInnerDiv"
             >
               <!-- <div class="presssectext flex justify-end uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]">
@@ -78,7 +77,7 @@
               </div>
 
               <!-- flex justify-between -->
-              <div class="">
+              <div class="centerdiv mbtextslug">
                 <div
                   v-if="project.related"
                   :class="{ projecttextarea: true, 'pt-5': meta.title }"
@@ -214,167 +213,7 @@
         </div>
       </div>
 
-      <!-- Image Overlay Gallery -->
-
-      <div class="block">
-        <div
-          v-if="isGalleryExpanded"
-          class="overlay-gallery"
-          ref="overlayGallery"
-          @mouseenter="showGalleryOnHover"
-          @mouseleave="hideGalleryOnLeave"
-        >
-          <div class="gallery-content">
-            <div class="close-button">
-              <button
-                v-if="isGalleryExpanded"
-                @click="closeImageModal"
-                class="close-buttons"
-              >
-                Exit
-              </button>
-              <button
-                v-if="isGalleryExpanded"
-                class="previous close-buttons"
-                :class="back ? '' : 'disabled'"
-                @click="prev"
-                ref="prev"
-                aria-label="Previous"
-              >
-                previous
-              </button>
-              <button
-                v-if="isGalleryExpanded"
-                class="next close-buttons"
-                @click="next"
-                aria-label="Next"
-              >
-                next
-              </button>
-            </div>
-            <!-- Next Arrow -->
-            <!-- <div  v-if="isGalleryExpanded" class="next-arrow" @click="nextImage">
-         next
-        </div> -->
-
-            <!-- <div  v-if="isGalleryExpanded" class="close-button" @click="next">
-          next
-        </div> -->
-
-            <div class="gallery-images">
-              <section
-                class="top-0 left-0 hidden w-full md:block cursor-grab slider"
-                v-swiper:mySwiper="swiperOptions"
-                @slideChange="onSlideChange"
-                ref="slider"
-              >
-                <div class="relative z-40 w-full h-full swiper-wrapper">
-                  <div
-                    v-for="(slide, index) in project.slider"
-                    :key="slide._key"
-                    class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                    :class="realIndex == 0 ? '' : ''"
-                  >
-                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16">
-                      <figure
-                        v-for="image in slide.images"
-                        :key="image._key"
-                        class="overlaydiv flex flex-col flex-1  h-full"
-                        :class="
-                          image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
-                        "
-                      >
-                        <MediaImage
-                          :src="image.image.asset._ref"
-                          v-if="image.image"
-                          class="gallery-image w-auto h-full"
-                          :class="
-                            image.padding
-                              ? 'object-contain'
-                              : 'object-contain max-w-full'
-                          "
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          :sizes="'sm:200vw md:150vw lg:200vw'"
-                        ></MediaImage>
-                        <MediaVideoPlay
-                          :id="image.video.id"
-                          :active="realIndex == index ? true : false"
-                          v-else-if="image.video.id"
-                          :poster="`https://image.mux.com/${
-                            image.video.id
-                          }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          @click="handleVideoClick(image.video.id)"
-                          class="gallery-imagevid relative  object-center z-[10000000] h-auto p-4 my-auto"
-                        ></MediaVideoPlay>
-                        <!-- Display YouTube Video -->
-                        <iframe
-                          v-else-if="image.youtubeUrl"
-                          :src="getYouTubeEmbedUrl(image.youtubeUrl)"
-                          frameborder="0"
-                          :style="{}"
-                          allowfullscreen
-                          class="gallery-imagevid relative object-center z-[10000000]  h-auto p-4 my-auto"
-                        ></iframe>
-                        <!-- Display Vimeo Video -->
-                        <iframe
-                          v-else-if="image.vimeoUrl"
-                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
-                          frameborder="0"
-                          allowfullscreen
-                          :style="{}"
-                          class="gallery-imagevid relative  object-center z-[10000000]  h-auto p-4 my-auto"
-                        ></iframe>
-                      </figure>
-                    </div>
-
-  
-                  </div>
-                </div>
-
-
-     
-              </section>
-<!-- 
-              <div class="footcon" v-if="isGalleryExpanded">
-          <div class=" w-full flex justify-center">
-            <div
-              class="copyrtex items-baseline  w-[96.5vw]  justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
-            >
-              <div
-                class="titleTextt flex  items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
-              >
-              <div class="animate-hover text-[1.2rem] pr-5">   
-                 <p
-                 v-if="project"
-                    >{{ project.title }}</p
-                  >
-                  </div
-                >
-                <p class="crtext text-[1.2rem]">
-                  COPYRIGHT ©2024
-                </p>
-              </div>
-           
-              <p class=" text-[1.2rem] text-end titleTextt">Coralie Rose Casting</p>
-            </div>
-          </div>
-        </div> -->
-
-            </div>
-          </div>
-        </div>
-      </div>
+    
     </section>
 
 
@@ -668,9 +507,9 @@ export default {
 .picssizeworks{
   /* width: 32vw; */
   /* width: 32.1vw; */
-  width: 31.9vw;
+  /* width: 31.9vw;
     height: 30vh;
-    height: 33vh;
+    height: 33vh; */
     overflow: hidden;
 }
 
@@ -1022,6 +861,8 @@ button .circle:hover {
   font-family: Atlas Grotesk, sans-serif !important;
 }
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* Your tablet-specific styles here */
   svg {
@@ -1040,11 +881,11 @@ button .circle:hover {
   }
 
   .ptitle{
-    width: 95vw;
+    /* width: 95vw; */
     /* font-size: 5rem; */
     display: flex;
     font-family: Atlas Grotesk, sans-serif !important;
-    /* justify-content: center; */
+    justify-content: center;
   }
 
 @media (max-width: 768px) {
@@ -1238,17 +1079,16 @@ display:contents;
   height: 100vh;
 }
 .scroll-container {
-  /* width: 98vw;
-  width: 100vw; */
-  /* width: 98vw !important; */
-  width: 100vw; 
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  /* justify-content: center; */
-  /*  justify-content: space-between; */
+    /* width: 98vw !important; */
+    width: 100vw;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-content: flex-start;
+    justify-content: center;
+    /* justify-content: space-between; */
+    align-items: center;
 }
 
 .outscrollcont{
@@ -1283,7 +1123,7 @@ display:contents;
   /* height: calc(27.33vw - -4px);   */
   /* height: calc(37.33vw - -4px); */
   /* width: calc(37.33vw - -4px); */
-  width: calc(32.3vw - 4px);
+  width: 70vw;
 }
 
 .masonry .flex-item {

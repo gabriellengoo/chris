@@ -1,28 +1,39 @@
 <template>
-  <main class="mt-1  w-screen flex h-screen overflow-hidden flex-col justify-center">
+  <main class="mt-1  w-screen flex md:h-screen h-auto overflow-hidden flex-col justify-center">
     <div class="bordersec">
 
-      <div
+      <!-- <div
       class="mobileslugtitle bcbtn2 hidden left-[90vw]  md:flex justify-end text-[1.525rem]"
-    >
+    > -->
       <!-- <button  class="backc z-50 px-8 py-8" @click="goBack">Back</button> -->
-      <a
+      <!-- <a
               class="z-50 pb-8 pt-0"
               href="./../"
               rel="noopener noreferrer"
             >
             Home
+            </a> -->
+    <!-- </div> -->
+    <div
+      class=" p-5 font-bold flex justify-end uppercase  md:pb-5 text-[6.5rem] leading-[5.5rem]  bcbtn2  left-[90vw]  md:flex "
+    >
+      <a
+              class="z-50 pb-8 pt-0"
+              href="./../"
+              rel="noopener noreferrer"
+            >
+            CHISARA AGOR
             </a>
     </div>
 
 
-    <div class="    h-screen overflow-hidden flex flex-col justify-center">
+    <div class="    md:h-screen h-auto pt-[10vh] md:pt-0 overflow-hidden flex flex-col justify-center">
       <!-- Section Titles List]-->
     
 
 
       <div v-if="poems && poems.sections" class=" flex justify-center  section-list">
-        <ul class="w-[50vw]  abouttexttitle font-bold text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5">
+        <ul class="md:w-[50vw] w-screen  abouttexttitle font-bold text-center uppercase md:text-[1.5rem] md:leading-[1.5rem] text-[2rem] leading-[normal] pb-5">
           <li
             v-for="section in poems.sections"
             :key="section._key"
@@ -36,7 +47,7 @@
       </div>
 
       <!-- Section Content -->
-      <div v-if="poems && poems.sections" class=" pb-0 anchor" id="about">
+      <div v-if="poems && poems.sections" class=" pb-[10vh] md:pb-0 anchor" id="about">
         <div
           v-for="section in poems.sections"
           :key="section._key"
@@ -51,13 +62,13 @@
                 </p> -->
 
                 <Richtext
-                  class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
+                  class="abouttextdesk centerdiv text-center md:p-10 md:text-[1.5rem] md:leading-[1.5rem] text-[2rem] leading-[normal] md:flex hidden"
                   :blocks="section.content"
                   v-if="section.content"
                 ></Richtext>
 
                 <Richtext
-                  class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
+                  class="abtextmb text-center contents md:hidden md:p-10 md:text-[1.5rem] md:leading-[1.5rem] text-[2rem] leading-[normal]"
                   :blocks="section.content"
                   v-if="section.content"
                 ></Richtext>
@@ -240,6 +251,7 @@ export default {
 .section-list li.active {
   /* background-color: #000; */
   color: #dddddd;
+  color: hsl(249.94deg 74.43% 42.94%);
 }
 
 .section-content {

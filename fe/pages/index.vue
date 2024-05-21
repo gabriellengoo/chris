@@ -1,11 +1,11 @@
 <template>
-  <!-- pt-40 -->
-  <div class="pt-28 md:pt-0">
+  <!-- pt-40 pt-28 md:pt-0-->
+  <div class="">
 
     <div class="containerhome absolute " :style="{ transform: containerTransform }">
-      <div class="w-[100vw]  h-screen">
+      <div class="w-[100vw]  md:h-screen h-auto ">
         <button
-          class=" z-20 top-[2vh] fixed left-[45vw] text-[white]"
+          class=" z-50 top-[2vh] fixed md:left-[45vw] right-0 text-[white]"
           @click="TOGGLE_MENU()"
         >
           <!-- Hamburger Icon -->
@@ -21,7 +21,7 @@
           <!-- X Icon -->
           <svg
             v-else
-            class="h-[4rem] w-[4rem]"
+            class="h-[4rem] w-[4rem] text-[#131211]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -34,13 +34,14 @@
             ></path>
           </svg>
         </button>
-        <div class="absolute z-20 top-[40vh] w-[50vw]">
-          <div v-if="menu" class="flex flex-col justify-center">
+        <!-- menu top-[40vh] -->
+        <div v-if="menu" class="absolute z-20 menustuff w-[50vw]">
+          <div  v-if="menu" class=" top-[20vh] relative flex flex-col justify-center">
           
 
             <a
               v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] pb-5"
+              class="abouttexttitle linktext uppercase text-[3.5rem]  pb-5 text-[#131211]"
               href="./"
               rel="noopener noreferrer"
             >
@@ -49,23 +50,33 @@
 
             <a
               v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] pb-5"
+              class="abouttexttitle linktext uppercase text-[3.5rem] pb-5 text-[#131211]"
               href="./poems"
               rel="noopener noreferrer"
             >
               Poems
             </a>
 
+            <a
+              v-if="menu"
+              class="abouttexttitle linktext uppercase text-[3.5rem] pb-5 text-[#131211] md:hidden contents"
+              href="./works"
+              rel="noopener noreferrer"
+            >
+            Work
+            </a>
+
             <button
-              class="abouttexttitle uppercase text-[1.8rem] leading-[1.5rem] pb-5 text-[white]"
+              class="abouttexttitle uppercase text-[3.5rem] pb-5 text-[#131211] hidden md:block "
               @click="transitionToPoems"
             >
             Work
             </button>
+            
 
             <a
               v-if="menu"
-              class="abouttexttitle linktext uppercase text-[1.8rem] leading-[1.5rem] "
+              class="abouttexttitle linktext uppercase text-[3.5rem] text-[#131211]"
               href="./"
               target="_blank"
               rel="noopener noreferrer"
@@ -74,49 +85,247 @@
             </a>
 
             <p
-              class="presssectextlink mt-10 flex justify-center text-[1.8rem] text-[white] leading-[4.5rem]"
+              class="presssectextlink mt-10 flex justify-center text-[3.5rem] text-[#131211] leading-[4.5rem]"
             >
               Stay up to date
             </p>
 
-            <div class="social-icons text-center">
+            <div class="social-icons pt-10 text-center">
               <a
                 href="https://www.facebook.com/YourPage"
                 target="_blank"
                 class="social-icon"
               >
-                <i class="scale-[2] p-5 text-white fab fa-facebook-f"></i>
+                <i class="scale-[4] p-10 text-[#131211] fab fa-facebook-f"></i>
               </a>
               <a
                 href="https://twitter.com/YourPage"
                 target="_blank"
                 class="social-icon"
               >
-                <i class="scale-[2] p-5 text-white fab fa-twitter"></i>
+                <i class="scale-[4] p-10 text-[#131211] fab fa-twitter"></i>
               </a>
               <a
                 href="https://www.instagram.com/YourPage"
                 target="_blank"
                 class="social-icon"
               >
-                <i class="scale-[2] p-5 text-white fab fa-instagram"></i>
+                <i class="scale-[4] p-10 text-[#131211] fab fa-instagram"></i>
               </a>
             </div>
           </div>
 
-          <button
-            class="absolute left-[93vw] top-[-37vh] text-[black] uppercase text-[1.8rem] leading-[1.5rem] pb-5"
+          
+        </div>
+
+       
+
+        <!-- <Home v-if="currentSection === 'home'" /> -->
+        <div class="w-screen md:h-screen h-auto overflow-hidden flex flex-col md:flex-row justify-center">
+    
+ 
+
+
+
+
+
+ 
+
+      <!-- about text side -->
+      <div  >
+      <!-- md:pb-5 sm:pb-5  -->
+      <div v-if="home && home.sections" class="pb-0 anchor" id="about">
+        <!-- about -->
+        <span
+          class="aboutsec text-4xl"
+          v-for="section in home.sections"
+          :key="section._key"
+        >
+          <div
+            class="flex flex-col items-center pb-[5vw] "
+            v-if="section.title"
+          >
+        
+
+            <!-- about text -->
+            <div  class="md:flex flex-col md:p-10 md:pb-0 p-0 md:justify-between">
+  
+              <!-- <Header /> -->
+
+              <div class="md:p-10 md:pb-0 p-0">
+                <p
+                  class="abouttexttitle  md:pt-20 pt-36  text-center uppercase md:text-[6rem] text-[4rem] md:leading-[5.5rem] leading-[2.5rem] pb-5"
+                >
+                  Chisara Agor
+                </p>
+
+                <!-- press -->
+                <div
+                  v-if="home.sections3"
+                  class="presssecmd text-center justify-center md:pt-20 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                >
+                  <div
+                    v-for="sections3 in home.sections3"
+                    :key="sections3._key"
+                    class="md:p-5 presssecinnermd pb-20 md:pb-20"
+                  >
+                    <div class="presssec">
+                      <p
+                        v-if="sections3.title3"
+                        class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
+                      >
+                        <span>{{ sections3.title3 }}</span>
+                      </p>
+                      <Richtext
+                        class="presssectext uppercase md:pb-5 md:text-[6.5rem] text-[3rem] md:leading-[5.5rem] leading-[2.5rem]"
+                        :blocks="sections3.content3"
+                        v-if="sections3.content3"
+                      ></Richtext>
+                      <!-- <NuxtLink
+                        v-if="sections3.title3"
+                        to="/works"
+                        class="presssectextlink  justify-start text-[3.5rem] leading-[4.5rem]"
+                      >
+                        <span class="borderset">view here</span>
+                      </NuxtLink> -->
+                      <div class="presssectextlink  justify-start hidden md:contents ">
+                        <button class="borderset presssectextlink  text-[3.5rem] leading-[4.5rem]"
+              @click="transitionToPoems"
+            >
+            view here
+            </button>
+                      </div>
+
+                    
+
+                      <NuxtLink
+                        v-if="sections3.title3"
+                        to="/works"
+                        class="presssectextlink  justify-start text-[3.5rem] leading-[4.5rem] md:hidden contents"
+                      >
+                        <span class="borderset">view here</span>
+                      </NuxtLink>
+              
+                    </div>
+                 
+                  </div>
+                </div>
+
+            
+             
+
+
+                <p
+                  class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5"
+                >
+                  About Chisara Agor
+                </p>
+
+                <Richtext
+                  class="abouttextdesk centerdiv text-center md:p-10 text-[1.2rem] leading-[1.5rem] "
+                  :blocks="section.content"
+                  v-if="section.content"
+                ></Richtext>
+
+                <!-- <Richtext
+                  class="abtextmb centerdiv text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
+                  :blocks="section.content"
+                  v-if="section.content"
+                ></Richtext> -->
+
+
+
+                <p
+                  class="pt-20 abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5"
+                >
+                  Selected Work
+                </p>
+
+
+<!-- works grid -->
+    <div v-if="home.grid2" class=" md:w-[45vw] w-screen flex justify-center">
+                <Grid3
+                  class="imagemarquee pl-[2rem]"
+                  size="small"
+                  :items="home.grid2"
+                ></Grid3>
+              </div>
+
+
+
+                    <!-- contct -->
+                <!-- Display the About Image    v-if="section.image.image"-->
+                <div id="contact" class="anchor">
+                  <div
+                    v-if="home.sections2"
+                    class="contact-section  text-center contactsecmd  flex justify-center"
+                  >
+                  <!-- border-t-[.1rem] border-solid border-[.1rem]  border-white-->
+                    <div class="contactsecall  p-10 md:pt-0">
+
+                      <p
+                  class="abouttexttitle uppercase text-[1.5rem] leading-[1.5rem] md:text-[1rem] md:leading-[1rem] pb-5"
+                >
+             Contact
+                </p>
+
+                      <div class="md:flex md:pt-0">
+                        <div class="pt-5">
+                          <!-- <div class="contactsec  text-[1.4rem] leading-[1.4rem] text-left contactinner">
+                              ©2024 
+                CHISARA AGOR
+                            </div> -->
+                          <div
+                            v-for="sections2 in home.sections2"
+                            :key="sections2._key"
+                            class="contacttextmd"
+                          >
+                            <div
+                              v-if="sections2.content2"
+                              class="contactsec  text-[1rem] leading-[1rem] "
+                            >
+                           
+                              <Richtext
+                                class=" text-left contactinner"
+                                :blocks="sections2.content2"
+                                v-if="sections2.content2"
+                              ></Richtext>
+                            </div>
+                          </div>
+                        </div>
+
+                    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+           
+
+              <!-- <div class="flex justify-end"> -->
+              <!-- about textt -->
+            
+            </div>
+            <!-- </div> -->
+          </div>
+        </span>
+      </div>
+    </div>
+
+
+    <!-- img left side -->
+   <div class="hidden md:contents">
+    <button
+            class="absolute nombdisplay pepcol z-50 left-[90vw] top-[3vh] uppercase font-bold text-[3.5rem] leading-[1.5rem] pb-5"
             @click="goBack"
           >
             Home
           </button>
-        </div>
 
-        <!-- <Home v-if="currentSection === 'home'" /> -->
-        <div class="w-screen h-screen overflow-hidden flex justify-center">
-    
-    <!-- home img -->
-    <div v-if="home && home.sections4"  class="homeimgsize">
+
+       <!-- home img -->
+       <div v-if="home && home.sections4"  class="homeimgsize z-20">
       <div v-for="section in home.sections4" :key="section._key">
         <MediaImage
           :size="section.image4.size"
@@ -150,172 +359,33 @@
       </div>
       
     </div>
+   
 
 
 
 
-
- 
-
-      <!-- about text -->
-      <div  >
-      <!-- md:pb-5 sm:pb-5  -->
-      <div v-if="home && home.sections" class="pb-0 anchor" id="about">
-        <!-- about -->
-        <span
-          class="aboutsec text-4xl"
-          v-for="section in home.sections"
-          :key="section._key"
+<!-- imgover -->
+    <div
+        v-for="section in home.sections"
+        :key="section._key"
+        class="imgover md:flex hidden md:pt-0 md:pb-20 abouttitle  md:justify-center text-5xl md:text-6xl z-30"
+      >
+        <div
+          v-if="section.image.image"
+          class="contactimagemobilecont w-[30vw] h-fit flex justify-center"
         >
-          <div
-            class="flex flex-col items-center pb-[5vw] "
-            v-if="section.title"
-          >
-        
-
-            <!-- about text -->
-            <div  class="md:flex flex-col p-10 pb-0 md:justify-between">
-  
-              <!-- <Header /> -->
-
-              <div class="p-10">
-                <!-- <p
-                  class="abouttexttitle text-center uppercase text-[6rem] leading-[5.5rem] pb-5"
-                >
-                  Chisara Agor
-                </p> -->
-
-                <!-- press -->
-                <div
-                  v-if="home.sections3"
-                  class="presssecmd text-center justify-center md:pt-0 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
-                >
-                  <div
-                    v-for="sections3 in home.sections3"
-                    :key="sections3._key"
-                    class="md:p-5 presssecinnermd"
-                  >
-                    <div class="presssec">
-                      <!-- <p
-                        v-if="sections3.title3"
-                        class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
-                      >
-                        <span>{{ sections3.title3 }}</span>
-                      </p> -->
-                      <Richtext
-                        class="presssectext uppercase md:pb-5 text-[6.5rem] leading-[5.5rem]"
-                        :blocks="sections3.content3"
-                        v-if="sections3.content3"
-                      ></Richtext>
-                      <NuxtLink
-                        v-if="sections3.title3"
-                        to="/works"
-                        class="presssectextlink justify-start text-[3.5rem] leading-[4.5rem]"
-                      >
-                        <span>view here</span>
-                      </NuxtLink>
-                    </div>
-                 
-                  </div>
-                </div>
-
-            
-                <div v-if="home.grid2" class=" flex justify-center">
-                <Grid2
-                  class="imagemarquee pl-[2rem]"
-                  size="small"
-                  :items="home.grid2"
-                ></Grid2>
-              </div>
-
-
-                <p
-                  class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pt-20 pb-5"
-                >
-                  About Chisara Agor
-                </p>
-
-                <Richtext
-                  class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-                <Richtext
-                  class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-
-
-                    <!-- contct -->
-                <!-- Display the About Image    v-if="section.image.image"-->
-                <div id="contact" class="anchor">
-                  <div
-                    v-if="home.sections2"
-                    class="contact-section  text-center contactsecmd pt-40 flex justify-between"
-                  >
-                    <div class="contactsecall border-t-[.2rem] border-solid  border-black md:pt-0">
-
-                      <p
-                  class="abouttexttitle uppercase text-[1.5rem] pt-5 leading-[1.5rem] pb-5"
-                >
-                  Contact
-                </p>
-
-                      <div class="md:flex md:pt-0">
-                        <div class="pt-5">
-                          <div
-                            v-for="sections2 in home.sections2"
-                            :key="sections2._key"
-                            class="contacttextmd"
-                          >
-                            <div
-                              v-if="sections2.content2"
-                              class="contactsec  text-[1.4rem] leading-[1.4rem]"
-                            >
-                              <Richtext
-                                class=" text-left contactinner"
-                                :blocks="sections2.content2"
-                                v-if="sections2.content2"
-                              ></Richtext>
-                            </div>
-                          </div>
-                        </div>
-
-                    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Add a button to toggle the collapsible section -->
-              <button
-                @click="toggleCollapsible"
-                v-if="!isCollapsibleOpen"
-                class="contents md:hidden collapsible-button"
-              >
-                ... view more
-                <!-- <i :class="arrowIconClass"></i> -->
-              </button>
-
-              <!-- <div class="flex justify-end"> -->
-              <!-- about textt -->
-              <div v-if="isCollapsibleOpen" class="collapsible-section">
-                <Richtext
-                  class="abtextmbopen md:p-5 text-[1.7rem] leading-[1.7rem]"
-                  :blocks="section.content"
-                  v-if="section.content"
-                ></Richtext>
-              </div>
-            </div>
-            <!-- </div> -->
-          </div>
-        </span>
+          <MediaImage
+            :size="section.image.size"
+            :aspect="section.image.aspect"
+            :src="section.image.image"
+            v-if="section.image.image"
+            class="contactimagemobile w-full"
+            @click="startGlitchEffect"
+          ></MediaImage>
+        </div>
       </div>
-    </div>
 
+    </div>
     <!-- <p class="imgtext pb-5 ">
       COPYRIGHT ©2024 CHISARA AGOR
             </p> -->
@@ -622,8 +692,8 @@ export default {
 
 .abouttexttitle {
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
+  /* font-family: "Roboto", sans-serif; */
+  /* font-weight: 900; */
 }
 
 .containerhome {
@@ -663,7 +733,7 @@ export default {
 .imgover {
   position: absolute;
   top: 30%;
-  left: 70%;
+  left: 70vw;
   transform: translate(-50%, -50%);
   color: #fff;
 }
@@ -865,7 +935,7 @@ export default {
   flex-direction: column;
   flex-direction: row;
   justify-content: flex-end;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -893,7 +963,7 @@ export default {
 
 
 .contacttextmd{
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
   /* border: 1px solid hsl(249.94deg 74.43% 42.94%); */
 }
 
@@ -912,14 +982,14 @@ export default {
 .presssectext {
   /* font-family: "GTWalsheiml"; */
   /* text-transform: none !important; */
-  /* color: rgb(55, 28, 191); */
+  color: rgb(55, 28, 191); 
   display: flex;
   justify-content: space-between !important;
   padding-top: 1rem;
 }
 
 .presssectextlink {
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
@@ -976,6 +1046,59 @@ export default {
     flex-direction: row; */
 
 @media (max-width: 768px) {
+
+  .contactsecall{
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: row; */
+    justify-content: flex-end;
+    /* font-family: "Roboto", sans-serif; */
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .presssectext {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.menustuff {
+    height: 100vh;
+    width: 100vw;
+}
+
+.containerhome {
+        display: block;
+        width: 99vw;
+        height: auto;
+    }
+
+  .homeimgsize {
+    width: 100vw;
+  height: 100vh;
+}
+
+  .aboutsec {
+  width: 100vw;
+  height: auto !important;
+}
+
+.abouttextdesk  {
+   
+    font-size: 1.5rem;
+        line-height: normal;
+}
+
+
+
+.imgover{
+  display: none !important;
+}
+
+.nombdisplay{
+  display: none !important;
+}
+
   .presssectext {
     font-family: unset;
   }

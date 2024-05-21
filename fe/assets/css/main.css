@@ -20,9 +20,11 @@ html {
   height: auto;
   min-height: 100vh !important;
   background: #f3f3f7;
-  /* background: #131211; */
-  /* color: white;  */
-  color:  #131211; 
+  /* background: black; */
+  background: #131211;
+  color: white; 
+  font-family: Roboto, sans-serif;
+  /* color:  #131211;  */
   /* background: black;
   color: white; */
   /* overflow: hidden; */
@@ -41,7 +43,7 @@ html {
 .linktext{
   display: flex;
     justify-content: center;
-    color: white;
+    /* color: white; */
 }
 
 
@@ -78,19 +80,56 @@ html {
 /* .contactinner p a{
   border: 1px solid white;
   padding: .5rem;
-} */
+} */ 
 
 header{
   z-index: 99999;
   background-color: none;
 }
 
+
+.borderset {
+  /* border: 1.5px solid #fff; */
+  border: 1.5px solid #371cbf;
+  /* border: 1.5px solid black; */
+  color: #371cbf;
+  padding: .5rem;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.borderset:hover {
+  background-color:black;
+  background-color: rgb(55, 28, 191);
+  border: 1.5px solid #131211;
+  /* color: white; */
+  color: #131211;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.abouttextdesk div{
+  width: 30vw;
+}
+
+
+.menustuff{
+  height: 100vh;
+    background-color: #f7f6fb;
+    background-color: hsl(249.94deg 74.43% 42.94%);
+}
+
+.centerdiv{
+  display: flex;
+    justify-content: center;
+}
+
 .capplace{
   padding-top: .5rem;
   display: flex;
   justify-content: center;
+  /* justify-content: end; */
+  color: hsl(249.94deg 74.43% 42.94%);
   width: inherit;
-  font-size: 1.75rem !important;
+  font-size: 3rem !important;
 }
 
 .capplaces{
@@ -99,6 +138,10 @@ header{
   justify-content: center;
   width: inherit;
   font-size: 1.5rem !important;
+}
+
+.pepcol{
+  color: hsl(249.94deg 74.43% 42.94%);
 }
 
 .figsize{
@@ -136,8 +179,8 @@ header{
   /* background-color: rgb(255, 255, 255); */
   /* background-color: hsl(249.94deg 74.43% 42.94%); */
   background-repeat: no-repeat;
-  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(55, 28, 191) 30%, rgba(255, 255, 255, 0.833) 100%);
-  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.833) 100%);
+  /* background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(55, 28, 191) 30%, rgba(255, 255, 255, 0.833) 100%);
+  background-image: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.833) 100%); */
   /* opacity: .9; */
   z-index: 9998; /* Ensure it's behind the enlarged item */
   transition: opacity 0.3s ease; /* Add a smooth transition effect */
@@ -220,12 +263,40 @@ svg{
 
 
 @media (max-width: 768px) {
+
+  .bcbtn2 {
+    right: 2vw;
+    position: absolute;
+    top: 2vw;
+    left: 0;
+    /* width: 5vw; */
+    line-height: normal;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+
   .mbcopyr{
     padding-bottom: 11vh
 }
 
+.mbtextslug {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .copyr{
   width: 40vw !important;
+}
+
+.abouttextdesk div{
+  width: 90vw !important;
+}
+
+.blurfilter{
+    filter: blur(0px);
+    opacity: 1;
 }
 }
 

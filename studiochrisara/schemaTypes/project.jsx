@@ -14,22 +14,22 @@ export default {
       title: "Title",
       type: "string",
     },
-    {
-      name: "filmtype",
-      title: "Feature film or Short film",
-      type: "string",
-      options: {
-        list: [
-          { title: "Feature film", value: "feature" },
-          { title: "Short film", value: "short" }
-        ]
-      }
-    },
-    {
-      name: "inproduction",
-      title: "In production?",
-      type: "boolean",
-    },
+    // {
+    //   name: "filmtype",
+    //   title: "Feature film or Short film",
+    //   type: "string",
+    //   options: {
+    //     list: [
+    //       { title: "Feature film", value: "feature" },
+    //       { title: "Short film", value: "short" }
+    //     ]
+    //   }
+    // },
+    // {
+    //   name: "inproduction",
+    //   title: "In production?",
+    //   type: "boolean",
+    // },
     {
       name: "slug",
       title: "Slug",

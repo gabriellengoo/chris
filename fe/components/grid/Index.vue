@@ -4,7 +4,7 @@
     <div class="">
       <div class=" overflow-x-hidden h-[100vh] blurfilter" ref="scrollContainer" @scroll="handleScroll">
         <div v-for="item in items"  :key="item._key" class="">
-        <figure class="  w-[20vw] "   @mouseover="handleHover(item)"
+        <figure class="  md:w-[20vw] w-[70vw]"   @mouseover="handleHover(item)"
   @mouseleave="handleLeave">
           <NuxtLink
             v-if="item.reference.slug"
