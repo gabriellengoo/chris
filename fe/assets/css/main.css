@@ -34,6 +34,11 @@ html {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
+.seated-event-link .seated-event-link1{
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background: #381dbf;
+}
 
 .homeimgsize img {
  scale: .3;

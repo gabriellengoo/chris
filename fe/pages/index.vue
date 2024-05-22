@@ -1,9 +1,12 @@
 <template>
   <!-- pt-40 pt-28 md:pt-0-->
   <div class="">
-
+    <MailchimpForm />
     <div class="containerhome absolute " :style="{ transform: containerTransform }">
       <div class="w-[100vw]  md:h-screen h-auto ">
+
+       
+
         <button
           class=" z-50 top-[2vh] fixed md:left-[45vw] right-0 text-[white]"
           @click="TOGGLE_MENU()"
@@ -209,10 +212,13 @@
                     </div>
                  
                   </div>
+
+                  
                 </div>
 
-            
+                <SeatedWidget/>
              
+    
 
 
                 <p
@@ -397,7 +403,7 @@
    
 
 
-    <div class="new-section" :style="{ transform: newSectionTransform }">
+    <div class="new-section hidden md:block" :style="{ transform: newSectionTransform }">
         <!-- <Poems v-if="currentSection === 'poems'" /> -->
         <!-- <Poems /> -->
         <Works/>
@@ -423,6 +429,9 @@ import Works from "~/pages/works.vue";
 // import Poems from "~/components/Poems.vue";
 import Poems from "~/pages/poems.vue";
 import Home from "~/pages/index.vue";
+import MailchimpForm from '~/components/MailchimpForm.vue';
+import SeatedWidget from '~/components/SeatedWidget.vue';
+
 // import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -436,6 +445,8 @@ export default {
     Works,
     Home,
     Poems,
+    MailchimpForm,
+    SeatedWidget,
   },
 
   data() {

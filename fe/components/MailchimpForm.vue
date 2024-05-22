@@ -1,0 +1,143 @@
+<template>
+  <div>
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal">
+        <button @click="closeModal" class="close-button">&times;</button>
+        <div id="mc_embed_signup" v-html="formHtml"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      showModal: false,
+      formHtml: `
+        <form action="https://example.us1.list-manage.com/subscribe/post?u=abc123&amp;id=123abc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_shell">
+            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+            #mc_embed_signup {background: #fff; clear: left; color: #131211; font: 14px Helvetica, Arial, sans-serif;}
+            #mc_embed_signup h2 {color: #381dbf;}
+            #mc_embed_signup .button {background: #381dbf;}
+              /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. */
+            </style>
+            <div id="mc_embed_signup">
+              <form action="https://chisaraagor.us13.list-manage.com/subscribe/post?u=46ff04e97eb3776315d43168e&amp;id=28bdaf8ec6&amp;f_id=003a38e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                <div id="mc_embed_signup_scroll">
+                  <h2>Subscribe</h2>
+                  <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                  <div class="mc-field-group">
+                    <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="">
+                  </div>
+                  <div class="mc-field-group">
+                    <label for="mce-FNAME">First Name </label>
+                    <input type="text" name="FNAME" class=" text" id="mce-FNAME" value="">
+                  </div>
+                  <div class="mc-field-group">
+                    <label for="mce-LNAME">Last Name </label>
+                    <input type="text" name="LNAME" class=" text" id="mce-LNAME" value="">
+                  </div>
+                  <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                  </div>
+                  <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                    <input type="text" name="b_46ff04e97eb3776315d43168e_28bdaf8ec6" tabindex="-1" value="">
+                  </div>
+                  <div class="clear">
+                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </form>
+      `
+    };
+  },
+  mounted() {
+    this.loadJQuery();
+    setTimeout(() => {
+      this.showModal = true;
+    }, 2000);
+  },
+  methods: {
+    loadJQuery() {
+      const jqueryScript = document.createElement('script');
+      jqueryScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+      jqueryScript.async = true;
+      jqueryScript.onload = () => {
+        this.loadMailchimpScript();
+      };
+      document.body.appendChild(jqueryScript);
+    },
+    loadMailchimpScript() {
+      const mailchimpScript = document.createElement('script');
+      mailchimpScript.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js';
+      mailchimpScript.async = true;
+      mailchimpScript.onload = () => {
+        (function($) {
+          window.fnames = new Array(); 
+          window.ftypes = new Array();
+          fnames[0] = 'EMAIL';
+          ftypes[0] = 'email';
+          fnames[1] = 'FNAME';
+          ftypes[1] = 'text';
+          fnames[2] = 'LNAME';
+          ftypes[2] = 'text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+      };
+      document.body.appendChild(mailchimpScript);
+    },
+    closeModal() {
+      this.showModal = false;
+    }
+  }
+};
+</script>
+
+<style scoped>
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box; /* Ensure padding does not affect width */
+  position: relative; /* Make positioning relative for the close button */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #381dbf;
+}
+
+.clear {
+  clear: both;
+}
+</style>
