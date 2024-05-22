@@ -743,7 +743,7 @@ export default {
 
 .imgover {
   position: absolute;
-  top: 30%;
+  top: 45%;
   left: 70vw;
   transform: translate(-50%, -50%);
   color: #fff;
@@ -1027,7 +1027,7 @@ export default {
 .homeimgsize {
   width: 50vw;
   height: 100vh;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   overflow: hidden;
