@@ -113,6 +113,14 @@ header{
 
 .abouttextdesk div{
   width: 30vw;
+  /* height: 50vh; */
+  overflow: scroll;
+}
+
+.mbpoems{
+  width: 30vw;
+  /* height: 50vh; */
+  overflow: scroll;
 }
 
 
@@ -297,6 +305,12 @@ svg{
 
 .abouttextdesk div{
   width: 90vw !important;
+  /* height: 100vh; */
+}
+
+.mbpoems div{
+  width: 90vw !important;
+  /* height: 100vh; */
 }
 
 .blurfilter{

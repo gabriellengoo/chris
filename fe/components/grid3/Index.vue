@@ -111,20 +111,14 @@
                   :size="item.image.size"
                   :aspect="item.image.aspect"
                   class="imgmarkgrsize"
-                  :style="{     
-                          
-                          padding: `5vw !important`,
-                        }"
+                 
                   :src="item.image.image"
                   v-if="item.image.image"
                 ></MediaImage>
                 <MediaVideo
                   :id="item.video.id"
                   class="vidsize"
-                  :style="{     
-                          
-                          padding: `5vw !important`,
-                        }"
+                 
                   v-if="item.video.id"
                 ></MediaVideo>
                              <!-- Render YouTube Video -->

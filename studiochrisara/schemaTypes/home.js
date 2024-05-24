@@ -144,6 +144,31 @@ export default {
         },
       ],
     },
+
+    {
+      name: "sections5",
+      title: "Additional links",
+      type: "array",
+      of: [
+        {
+          name: "section5",
+          title: "Section",
+          type: "object",
+          fields: [
+            {
+              name: "title5",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "content5",
+              title: "Content",
+              type: "blockContent",
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

@@ -33,16 +33,16 @@
                 </p> -->
 
                 <Richtext
-                  class="abouttextdesk text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
+                  class="abouttextdesk mbpoems text-center md:p-10 text-[1.5rem] leading-[1.5rem] md:contents hidden"
                   :blocks="section.content"
                   v-if="section.content"
                 ></Richtext>
 
-                <Richtext
+                <!-- <Richtext
                   class="abtextmb text-center contents md:hidden md:p-10 text-[1.7rem] leading-[1.7rem]"
                   :blocks="section.content"
                   v-if="section.content"
-                ></Richtext>
+                ></Richtext> -->
               </div>
             </div>
           </div>
