@@ -19,9 +19,10 @@ body,
 html {
   height: auto;
   min-height: 100vh !important;
-  background: #f3f3f7;
+  /* background: #f3f3f7; */
   /* background: black; */
   background: #131211;
+  /* background: #0278d9; */
   color: white; 
   font-family: Roboto, sans-serif;
   /* color:  #131211;  */

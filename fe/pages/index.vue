@@ -230,9 +230,9 @@
                               <div
                                 class="presssectextlink justify-start flex  md:contents"
                               >
-                                <button
+                                <div
                                   class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
-                                  @click="transitionToPoems"
+                                  
                                 >
                                   <!-- WE ARE THE NEW HOPE -->
                                   <!-- {{ sections5.title5 }} -->
@@ -241,7 +241,7 @@
                               :blocks="sections5.content5"
                               v-if="sections5.content5"
                             ></Richtext>
-                                </button>
+                            </div>
                               </div>
                               <!-- <div
                                 class="presssectextlink justify-start hidden md:contents"
