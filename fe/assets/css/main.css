@@ -45,6 +45,11 @@ html {
  /* scale: .3; */
 }
 
+.poemsize{
+  overflow: scroll;
+  height: 80vh;
+}
+
 
 .padsee{
   padding: 1.25rem  !important;

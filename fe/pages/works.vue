@@ -53,7 +53,7 @@ import { mapState } from 'vuex';
 export default {
   data() {
     return {
-      hoverTexts: ['CLICK ME', 'VISUAL ARTIST', 'WRITER', 'PERFORMER','MUSICIAN','DESIGNER'], // Array of text for hovering
+      hoverTexts: ['CLICK ME', 'ARTIST', 'COMPOSER', 'WRITER','ACTOR','CHOREOGRAPHER'], // Array of text for hovering
       hoverIndex: 0, // Index to track the current hover text
       gridTypes: ['grid', 'gridm', 'gride', 'gridl'], // Array of grid types
       gridIndex: 0 // Index to track the current grid type

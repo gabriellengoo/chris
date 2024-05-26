@@ -95,9 +95,9 @@
 
 
 
-<div class="social-icons pt-10 text-center">
+            <div class="social-icons pt-10 text-center">
   <a
-  href="https://www.facebook.com/ChisaraMusic/"
+    href="https://www.facebook.com/ChisaraMusic/"
     target="_blank"
     class="social-icon"
     style="margin: 0 30px;"
@@ -105,7 +105,7 @@
     <i class="scale-[4] text-[#131211] fab fa-facebook-f"></i>
   </a>
   <a
-  href="https://open.spotify.com/artist/35nZHzY4ubLVuh1MmGLrGp?si=oRgAtczVTmGdzpPiOLD5GA"
+    href="https://open.spotify.com/artist/35nZHzY4ubLVuh1MmGLrGp?si=oRgAtczVTmGdzpPiOLD5GA"
     target="_blank"
     class="social-icon"
     style="margin: 0 30px;"
@@ -113,14 +113,23 @@
     <i class="scale-[4] text-[#131211] fab fa-spotify"></i>
   </a>
   <a
-  href="https://www.instagram.com/chisara_/"
+    href="https://www.instagram.com/chisara_/"
     target="_blank"
     class="social-icon"
     style="margin: 0 30px;"
   >
     <i class="scale-[4] text-[#131211] fab fa-instagram"></i>
   </a>
+  <a
+    href="https://www.youtube.com/channel/UCnhZbUO4IiqDE2isVi9Ambg"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-youtube"></i>
+  </a>
 </div>
+
 
 
           </div>
@@ -160,12 +169,12 @@
                       <!-- press -->
                       <div
                         v-if="home.sections3"
-                        class="presssecmd text-center justify-center md:pt-20 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                        class="presssecmd text-center justify-center md:pt-20  text-[1.7rem] leading-[1.7rem] flex"
                       >
                         <div
                           v-for="sections3 in home.sections3"
                           :key="sections3._key"
-                          class="md:p-5 presssecinnermd pb-20 md:pb-20"
+                          class="md:p-5  "
                         >
                           <div class="presssec">
                             <p
@@ -195,7 +204,7 @@
                         <div
                           v-for="sections6 in home.sections6"
                           :key="sections6._key"
-                          class="md:p-5 presssecinnermd  md:pb-20"
+                          class="md:p-5 presssecinnermd "
                         >
                           <div class="presssec">
                          
@@ -225,24 +234,7 @@
                       </div>
 
 
-                            <div
-                              class="presssectextlink justify-start hidden md:contents"
-                            >
-                              <button
-                                class="borderset padsee  presssectextlink text-[3.5rem] leading-[4.5rem]"
-                                @click="transitionToPoems"
-                              >
-                                see projects
-                              </button>
-                            </div>
-
-                            <NuxtLink
-                              v-if="sections3.title3"
-                              to="/works"
-                              class="presssectextlink   justify-start text-[3.5rem] leading-[4.5rem] md:hidden contents"
-                            >
-                              <span class="borderset padsee">see projects</span>
-                            </NuxtLink>
+            
                           </div>
                         </div>
                       </div>
@@ -1079,7 +1071,8 @@ export default {
   /* text-transform: none !important; */
   color: rgb(55, 28, 191);
   display: flex;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
+  justify-content: center !important;
   padding-top: 1rem;
 }
 

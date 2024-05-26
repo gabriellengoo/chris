@@ -47,7 +47,7 @@
       </div>
 
       <!-- Section Content -->
-      <div v-if="poems && poems.sections" class=" pb-[10vh] md:pb-0 anchor" id="about">
+      <div v-if="poems && poems.sections" class=" pb-[10vh] md:pb-0 anchor md:h-auto h-[80vh]" id="about">
         <div
           v-for="section in poems.sections"
           :key="section._key"
@@ -56,7 +56,7 @@
         >
           <div class=" items-center" v-if="section.title">
             <div class="md:flex flex-col p-10 pb-0 md:justify-between">
-              <div class="p-10">
+              <div class="p-10 poemsize">
                 <!-- <p class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5">
                   {{ section.title }}
                 </p> -->
