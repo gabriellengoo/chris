@@ -133,7 +133,8 @@
 
            <!-- home img mobile -->
            <div v-if="home && home.sections4" class="md:hidden flex z-20 ">
-              <div v-for="section in home.sections4" :key="section._key" class='mbpic h-[100vh]'>
+            <!-- h-[100vh] -->
+              <div v-for="section in home.sections4" :key="section._key" class='mbpic '>
                 <MediaImage
                   :size="section.image4.size"
                   :aspect="section.image4.aspect"
