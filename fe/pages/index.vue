@@ -421,7 +421,7 @@
                                     class="contactsec text-[1rem] leading-[1rem]"
                                   >
                                     <Richtext
-                                      class="text-left contactinner"
+                                      class="text-left contactinner p-[2vw] md:p-[0]"
                                       :blocks="sections2.content2"
                                       v-if="sections2.content2"
                                     ></Richtext>
