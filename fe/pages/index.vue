@@ -93,29 +93,36 @@
               Stay up to date
             </p>
 
-            <div class="social-icons pt-10 text-center">
-              <a
-                href="https://www.facebook.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[4] p-10 text-[#131211] fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="https://twitter.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[4] p-10 text-[#131211] fab fa-twitter"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/YourPage"
-                target="_blank"
-                class="social-icon"
-              >
-                <i class="scale-[4] p-10 text-[#131211] fab fa-instagram"></i>
-              </a>
-            </div>
+
+
+<div class="social-icons pt-10 text-center">
+  <a
+  href="https://www.facebook.com/ChisaraMusic/"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-facebook-f"></i>
+  </a>
+  <a
+  href="https://open.spotify.com/artist/35nZHzY4ubLVuh1MmGLrGp?si=oRgAtczVTmGdzpPiOLD5GA"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-spotify"></i>
+  </a>
+  <a
+  href="https://www.instagram.com/chisara_/"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-instagram"></i>
+  </a>
+</div>
+
+
           </div>
         </div>
 
@@ -179,23 +186,62 @@
                       >
                         <span class="borderset">view here</span>
                       </NuxtLink> -->
+
+
+                      <div
+                        v-if="home.sections6"
+                        class="presssecmd text-center justify-center pb-20 md:pb-0 text-[1.7rem] leading-[1.7rem]  flex flex-col items-center md:flex-row"
+                      >
+                        <div
+                          v-for="sections6 in home.sections6"
+                          :key="sections6._key"
+                          class="md:p-5 presssecinnermd  md:pb-20"
+                        >
+                          <div class="presssec">
+                         
+
+                            <div v-if="sections6.title6">
+                              <div
+                                class="presssectextlink justify-start flex  md:contents"
+                              >
+                                <div
+                                  class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
+                                  
+                                >
+                                
+                                  <Richtext
+                              class="p-5"
+                              :blocks="sections6.content6"
+                              v-if="sections6.content6"
+                            ></Richtext>
+                            </div>
+                              </div>
+                           
+                            </div>
+
+                
+                          </div>
+                        </div>
+                      </div>
+
+
                             <div
                               class="presssectextlink justify-start hidden md:contents"
                             >
                               <button
-                                class="borderset presssectextlink text-[3.5rem] leading-[4.5rem]"
+                                class="borderset padsee  presssectextlink text-[3.5rem] leading-[4.5rem]"
                                 @click="transitionToPoems"
                               >
-                                view here
+                                see projects
                               </button>
                             </div>
 
                             <NuxtLink
                               v-if="sections3.title3"
                               to="/works"
-                              class="presssectextlink justify-start text-[3.5rem] leading-[4.5rem] md:hidden contents"
+                              class="presssectextlink   justify-start text-[3.5rem] leading-[4.5rem] md:hidden contents"
                             >
-                              <span class="borderset">view here</span>
+                              <span class="borderset padsee">see projects</span>
                             </NuxtLink>
                           </div>
                         </div>
@@ -366,7 +412,7 @@
 
             <!-- home img -->
             <div v-if="home && home.sections4" class="homeimgsize z-20">
-              <div v-for="section in home.sections4" :key="section._key">
+              <div v-for="section in home.sections4" :key="section._key" class='h-screen'>
                 <MediaImage
                   :size="section.image4.size"
                   :aspect="section.image4.aspect"
@@ -586,6 +632,14 @@ export default {
           content5,
         }
       }
+
+      {...,
+        sections6[]{
+          title6,
+          content6,
+        }
+      }
+
       }
       
       | order(_updatedAt desc)[0]

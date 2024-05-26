@@ -46,6 +46,10 @@ html {
 }
 
 
+.padsee{
+  padding: 1.25rem  !important;
+}
+
 .linktext{
   display: flex;
     justify-content: center;

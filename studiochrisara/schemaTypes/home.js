@@ -169,6 +169,30 @@ export default {
         },
       ],
     },
+    {
+      name: "sections6",
+      title: "View Here button",
+      type: "array",
+      of: [
+        {
+          name: "section6",
+          title: "Section",
+          type: "object",
+          fields: [
+            {
+              name: "title6",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "content6",
+              title: "Content",
+              type: "blockContent",
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
