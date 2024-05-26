@@ -121,7 +121,7 @@
     <i class="scale-[4] text-[#131211] fab fa-instagram"></i>
   </a>
   <a
-    href="https://www.youtube.com/channel/UCnhZbUO4IiqDE2isVi9Ambg"
+    href="https://www.youtube.com/channel/UCMfw5_IZ6huEc3JrzQoPrFQ"
     target="_blank"
     class="social-icon"
     style="margin: 0 30px;"
