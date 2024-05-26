@@ -94,6 +94,8 @@ export default {
 .modal {
     width: 80%;
     max-width: 80%;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0)
 }
+
 }
 </style>

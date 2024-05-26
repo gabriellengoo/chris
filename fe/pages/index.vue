@@ -1,14 +1,9 @@
 <template>
   <!-- pt-40 pt-28 md:pt-0-->
   <div class="">
-    <MailchimpForm />
-    <div
-      class="containerhome absolute"
-      :style="{ transform: containerTransform }"
-    >
-      <div class="w-[100vw] md:h-screen h-auto">
-        <button
-          class="z-50 top-[2vh] fixed md:left-[45vw] right-0 text-[white]"
+
+    <button
+          class="z-50 top-[2vh] fixed md:left-[45vw] md:right-0 right-[15px] text-[white]"
           @click="TOGGLE_MENU()"
         >
           <!-- Hamburger Icon -->
@@ -135,10 +130,65 @@
           </div>
         </div>
 
+
+           <!-- home img mobile -->
+           <div v-if="home && home.sections4" class="md:hidden block  z-20 mbpic">
+              <div v-for="section in home.sections4" :key="section._key" class='h-[100vh]'>
+                <MediaImage
+                  :size="section.image4.size"
+                  :aspect="section.image4.aspect"
+                  :src="section.image4.image4"
+                  v-if="section.image4.image4"
+                  class="landingimg max-h-full object-cover"
+                ></MediaImage>
+                <MediaVideo
+                  :id="section.video.id"
+                  v-if="section.video.id"
+                  class="md:max-h-full min-w-full object-cover"
+                ></MediaVideo>
+                <!-- Display YouTube Video -->
+                <iframe
+                  v-else-if="section.youtubeUrl"
+                  :src="getYouTubeEmdedUrl(section.youtubeUrl)"
+                  frameborder="0"
+                  allowfullscreen
+                  class="md:max-h-full min-w-full object-cover pointer-events-none"
+                ></iframe>
+                <!-- Display Vimeo Video width="560" height="315"-->
+
+                <iframe
+                  v-else-if="section.vimeoUrl"
+                  :src="getVimeoEmdedUrl(section.vimeoUrl)"
+                  frameborder="0"
+                  allowfullscreen
+                  class="max-w-full md:min-h-screen w-screen object-cover pointer-events-none"
+                ></iframe>
+              </div>
+            </div>
+
+    <!-- <MailchimpForm /> -->
+    <div
+      class="containerhome absolute"
+      :style="{ transform: containerTransform }"
+    >
+      <div class="w-[100vw] md:h-screen h-auto">
+       
+
+
+       
+
+
         <!-- <Home v-if="currentSection === 'home'" /> -->
         <div
           class="w-screen md:h-screen h-auto overflow-hidden flex flex-col md:flex-row justify-center"
         >
+
+
+          
+
+
+
+
           <!-- about text side -->
           <div>
             <!-- md:pb-5 sm:pb-5  -->

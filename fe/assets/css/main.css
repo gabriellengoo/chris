@@ -35,6 +35,16 @@ html {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
+.mbpic{
+  position: fixed;
+  /* height: 100vh; */
+  /* width: 100vw; */
+  z-index: 0;
+  left: -50vw;
+  top: 0;
+  opacity: .4;
+}
+
 .seated-event-link .seated-event-link1{
   color: #ffffff;
   border: 2px solid #ffffff;
