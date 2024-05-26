@@ -16,19 +16,24 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/faviconl.ico' }
+    ],
+    script: [
+      {
+        hid: 'mcjs',
+        id: 'mcjs',
+        src: 'https://chimpstatic.com/mcjs-connected/js/users/46ff04e97eb3776315d43168e/2f02a337cb8211acd3c48ca51.js',
+        async: true
+      }
     ]
-  }, 
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // CSS file in the project
     '@/assets/css/main.css',
     '@/assets/css/grid.css',
     '@/assets/css/images.css',
     '@/assets/css/transitions.css',
     '@/assets/css/typography.css',
-    // SCSS file in the project
-    // '@/assets/scss/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -38,28 +43,22 @@ export default {
     { src: '@plugins/slider', mode: 'client' },
     '~/plugins/preview.client.js',
   ],
-  gsap: {
-    /* Module Options */
-  },
+  gsap: {},
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // "@nuxtjs/sanity",
-    // '@nuxtjs/sanity/module',
     'nuxt-gsap-module',
     '@nuxtjs/sanity/module',
     '@nuxt/image'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: [],
 
   sanity: {
-    // module options
     projectId: 'rxcle18h',
     apiVersion: '2023-09-05',
     useCdn: false, 
