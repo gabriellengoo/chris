@@ -216,6 +216,7 @@
 
                     <div class="md:p-10 md:pb-0 p-0">
                       <p
+                      v-if="!menu"
                         class="abouttexttitle md:pt-20 pt-36 text-center uppercase md:text-[6rem] text-[4rem] md:leading-[5.5rem] leading-[2.5rem] pb-5"
                       >
                         Chisara Agor
@@ -236,7 +237,7 @@
                               v-if="sections3.title3"
                               class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
                             >
-                              <span>{{ sections3.title3 }}</span>
+                              <span v-if="!menu">{{ sections3.title3 }}</span>
                             </p>
                             <Richtext
                               class="presssectext uppercase md:pb-5 md:text-[6.5rem] text-[3rem] md:leading-[5.5rem] leading-[2.5rem]"
@@ -270,7 +271,7 @@
                               >
                                 <div
                                   class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
-                                  
+                                  v-if="!menu"
                                 >
                                 
                                   <Richtext
@@ -325,14 +326,14 @@
                               >
                                 <div
                                   class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
-                                  
+                                  v-if="!menu"
                                 >
                                   <!-- WE ARE THE NEW HOPE -->
                                   <!-- {{ sections5.title5 }} -->
                                   <Richtext
                               class="p-5"
                               :blocks="sections5.content5"
-                              v-if="sections5.content5"
+                              v-if="sections5.content5 && !menu"
                             ></Richtext>
                             </div>
                               </div>
@@ -360,6 +361,7 @@
                       </div>
 
                       <p
+                      v-if="!menu"
                         class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5"
                       >
                         About Chisara Agor
@@ -368,7 +370,7 @@
                       <Richtext
                         class="abouttextdesk centerdiv text-center md:p-10 text-[1.2rem] leading-[1.5rem]"
                         :blocks="section.content"
-                        v-if="section.content"
+                        v-if="section.content && !menu"
                       ></Richtext>
 
                       <!-- <Richtext
@@ -378,6 +380,7 @@
                 ></Richtext> -->
 
                       <p
+                      v-if="!menu"
                         class="pt-20 abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5"
                       >
                         Selected Work
@@ -389,6 +392,7 @@
                         class="md:w-[45vw] w-screen flex justify-center"
                       >
                         <Grid3
+                        v-if="!menu"
                           class="imagemarquee pl-[2rem]"
                           size="small"
                           :items="home.grid2"
@@ -405,6 +409,7 @@
                           <!-- border-t-[.1rem] border-solid border-[.1rem]  border-white-->
                           <div class="contactsecall p-10 md:pt-0">
                             <p
+                            v-if="!menu"
                               class="abouttexttitle uppercase text-[1.5rem] leading-[1.5rem] md:text-[1rem] md:leading-[1rem] pb-5"
                             >
                               Contact
@@ -422,8 +427,9 @@
                                   class="contacttextmd"
                                 >
                                   <div
-                                    v-if="sections2.content2"
+                                    v-if="sections2.content2 && !menu"
                                     class="contactsec text-[1rem] leading-[1rem]"
+                                    
                                   >
                                     <Richtext
                                       class="text-left contactinner p-[2vw] md:p-[0]"
@@ -1212,7 +1218,8 @@ export default {
   .containerhome {
     display: block;
     width: 99vw;
-    height: auto;
+    height: 100vh;
+        overflow: scroll;
   }
 
   .homeimgsize {
