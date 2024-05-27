@@ -41,15 +41,10 @@
               </div>
             </div>
 
-    <!-- <MailchimpForm /> -->
-    <div
-      class="containerhome absolute"
-      :style="{ transform: containerTransform }"
-    >
-      <div class="w-[100vw] md:h-screen h-auto">
+            
        
         <button
-          class="z-50 top-[2vh] fixed md:left-[45vw] md:right-0 right-[15px] text-[white]"
+          class="z-50 top-[2vh] fixed md:hidden md:left-[45vw] md:right-0 right-[15px] text-[white]"
           @click="TOGGLE_MENU()"
         >
           <!-- Hamburger Icon -->
@@ -79,7 +74,142 @@
           </svg>
         </button>
         <!-- menu top-[40vh] -->
-        <div v-if="menu" class="absolute z-20 menustuff w-[50vw]">
+        <div v-if="menu" class="absolute md:hidden z-20 menustuff w-[50vw]">
+          <div
+            v-if="menu"
+            class="top-[20vh] relative flex flex-col justify-center"
+          >
+            <a
+              v-if="menu"
+              class="abouttexttitle linktext uppercase text-[3.5rem] pb-5 text-[#131211]"
+              href="./"
+              rel="noopener noreferrer"
+            >
+              Home
+            </a>
+
+            <a
+              v-if="menu"
+              class="abouttexttitle linktext uppercase text-[3.5rem] pb-5 text-[#131211]"
+              href="./poems"
+              rel="noopener noreferrer"
+            >
+              Poems
+            </a>
+
+            <a
+              v-if="menu"
+              class="abouttexttitle linktext uppercase text-[3.5rem] pb-5 text-[#131211] md:hidden contents"
+              href="./works"
+              rel="noopener noreferrer"
+            >
+              Work
+            </a>
+
+            <button
+              class="abouttexttitle uppercase text-[3.5rem] pb-5 text-[#131211] hidden md:block"
+              @click="transitionToPoems"
+            >
+              Work
+            </button>
+
+            <a
+              v-if="menu"
+              class="abouttexttitle linktext uppercase text-[3.5rem] text-[#131211]"
+              href="./"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Store
+            </a>
+
+            <p
+              class="presssectextlink mt-10 flex justify-center text-[3.5rem] text-[#131211] leading-[4.5rem]"
+            >
+              Stay up to date
+            </p>
+
+
+
+            <div class="social-icons pt-10 text-center">
+  <a
+    href="https://www.facebook.com/ChisaraMusic/"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-facebook-f"></i>
+  </a>
+  <a
+    href="https://open.spotify.com/artist/35nZHzY4ubLVuh1MmGLrGp?si=oRgAtczVTmGdzpPiOLD5GA"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-spotify"></i>
+  </a>
+  <a
+    href="https://www.instagram.com/chisara_/"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-instagram"></i>
+  </a>
+  <a
+    href="https://www.youtube.com/channel/UCMfw5_IZ6huEc3JrzQoPrFQ"
+    target="_blank"
+    class="social-icon"
+    style="margin: 0 30px;"
+  >
+    <i class="scale-[4] text-[#131211] fab fa-youtube"></i>
+  </a>
+</div>
+
+
+
+          </div>
+        </div>
+    <!-- <MailchimpForm /> -->
+    
+    <div
+      class="containerhome absolute"
+      :style="{ transform: containerTransform }"
+    >
+      <div class="w-[100vw] md:h-screen h-auto">
+       
+        <button
+          class="z-50 top-[2vh] md:fixed hidden md:left-[45vw] md:right-0 right-[15px] text-[white]"
+          @click="TOGGLE_MENU()"
+        >
+          <!-- Hamburger Icon -->
+          <svg
+            v-if="!menu"
+            class="h-[4rem] w-[4rem]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-width="1.5" d="M2 12h20M2 7h20M2 17h20"></path>
+          </svg>
+          <!-- X Icon -->
+          <svg
+            v-else
+            class="h-[4rem] w-[4rem] text-[#131211]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <!-- menu top-[40vh] -->
+        <div v-if="menu" class="md:absolute hidden z-20 menustuff w-[50vw]">
           <div
             v-if="menu"
             class="top-[20vh] relative flex flex-col justify-center"
