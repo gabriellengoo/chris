@@ -18,7 +18,7 @@
           :key="item._key"
         >
         
-          <figure class="md:p-10 p-3 pt-10">
+          <figure class=" p-3 pt-10">
             <NuxtLink
               v-if="item.reference.slug"
               :to="`/work/${item.reference.slug}`"
@@ -87,7 +87,7 @@
           :src="getYouTubeEmbedUrl(item.youtubeUrl)"
           frameborder="0"
           allowfullscreen
-          class="dubvid object-contain object-top w-auto h-full"
+          class=" w-[50vw] h-[40vh]"
         ></iframe>
 
         <!-- Render Vimeo Video -->
@@ -96,7 +96,7 @@
           :src="getVimeoEmbedUrl(item.vimeoUrl)"
           frameborder="0"
           allowfullscreen
-          class="dubvid object-contain object-top w-auto h-full"
+          class="w-[50vw] h-[40vh]"
         ></iframe>
                 <!-- :style="`aspect-ratio: ${item.video.aspect.replace(':', '/')}`" -->
                 <!-- <figcaption v-if="size == 'small'">
@@ -127,7 +127,7 @@
           :src="getYouTubeEmbedUrl(item.youtubeUrl)"
           frameborder="0"
           allowfullscreen
-          class="dubvid object-contain object-top w-auto h-full"
+          class="w-[50vw] h-[40vh]"
         ></iframe>
 
         <!-- Render Vimeo Video -->
@@ -136,7 +136,7 @@
           :src="getVimeoEmbedUrl(item.vimeoUrl)"
           frameborder="0"
           allowfullscreen
-          class="dubvid object-contain object-top w-auto h-full"
+          class="w-[50vw] h-[40vh]"
         ></iframe>
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
