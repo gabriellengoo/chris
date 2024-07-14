@@ -18,7 +18,7 @@
      
      
       <!-- about text w-2/4-->
-      <div>
+      <!-- <div>
         <div v-if="currentGrid === 'grid'" class="marquee-1">
           <Grid class="" :items="grid.grid" size="small"></Grid>
         </div>
@@ -32,6 +32,24 @@
         </div>
 
         <div v-if="currentGrid === 'gridl'" class=" marquee-4">
+          <Griddirect class="" :items="grid.gridl" size="small"></Griddirect>
+        </div>
+      </div> -->
+
+      <div>
+        <div v-if="currentGrid === 'grid'" class="marquee-1">
+          <Grid class="" :items="grid.grid" size="small"></Grid>
+        </div>
+
+        <div v-if="currentGrid === 'grid'" class=" marquee-2">
+          <Griddirect class="" :items="grid.gridm" size="small"></Griddirect>
+        </div>
+
+        <div v-if="currentGrid === 'grid'" class=" marquee-3">
+          <Grid class="" :items="grid.gride" size="small"></Grid>
+        </div>
+
+        <div v-if="currentGrid === 'grid'" class=" marquee-4">
           <Griddirect class="" :items="grid.gridl" size="small"></Griddirect>
         </div>
       </div>
@@ -55,7 +73,8 @@ export default {
     return {
       hoverTexts: ['CLICK ME', 'ARTIST', 'COMPOSER', 'WRITER','ACTOR','CHOREOGRAPHER'], // Array of text for hovering
       hoverIndex: 0, // Index to track the current hover text
-      gridTypes: ['grid', 'gridm', 'gride', 'gridl'], // Array of grid types
+      // gridTypes: ['grid', 'gridm', 'gride', 'gridl'], 
+      gridTypes: ['grid', 'grid', 'grid', 'grid'], // Array of grid types
       gridIndex: 0 // Index to track the current grid type
     };
   },

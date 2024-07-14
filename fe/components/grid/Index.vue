@@ -280,10 +280,13 @@ export default {
 
 
 .enlarged-item:hover .background-overlay {
-  opacity: 0; /* Fade out the background overlay on hover */
-}
-
-.blur {
+  opacity: 0; /* Fade out the background overlay on hover
+  
+  .blur {
   filter: blur(5px);
 }
+  */
+}
+
+
 </style>

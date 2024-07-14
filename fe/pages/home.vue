@@ -71,7 +71,7 @@
                   <!-- <p
                     class="abouttexttitle text-center uppercase text-[6rem] leading-[5.5rem] pb-5"
                   >
-                    Chisara Agor
+                    Chisara Agor 
                   </p> -->
 
                   <!-- press -->
@@ -307,6 +307,7 @@ export default {
           title,
           subtitle,
           content,
+          "title" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
           "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
         }
       }

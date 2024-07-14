@@ -45,7 +45,7 @@
               rel="noopener noreferrer"
             >
             CHISARA AGOR
-            </a>
+            </a> 
               </div> -->
 
               <div class="pb-5 mobileslugtitle ptitle">{{ project.title }}</div> 
@@ -195,7 +195,7 @@
                 frameborder="0"
                 allowfullscreen
                 
-                class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
+                class="scrollcost scrollcostvid youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
               <!-- Display Vimeo Video -->
               <iframe
@@ -204,7 +204,7 @@
                 frameborder="0"
                 allowfullscreen
                 
-                class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
+                class="scrollcost scrollcostvid youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
             </figure>
           </div>
@@ -340,7 +340,7 @@ export default {
       // Extract YouTube video ID from the URL
       const videoId = youtubeUrl.split("v=")[1];
       // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&loop=1&showinfo=0`;
     },
     getVimeoEmbedUrl(vimeoUrl) {
       // Extract Vimeo video ID from the URL
@@ -1124,6 +1124,10 @@ display:contents;
   /* height: calc(37.33vw - -4px); */
   /* width: calc(37.33vw - -4px); */
   width: 70vw;
+}
+
+.scrollcostvid{
+  height: calc(40.33vw - -4px);
 }
 
 .masonry .flex-item {

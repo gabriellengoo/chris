@@ -82,8 +82,9 @@
           </svg>
         </button>
         <!-- menu top-[40vh] -->
-        <div v-if="menu" class="md:absolute fixed z-20 menustuff w-[50vw]">
+        <div v-if="menu && home" class="md:absolute fixed z-20 menustuff w-[50vw]">
           <div
+          
             v-if="menu"
             class="top-[20vh] relative flex flex-col justify-center"
           >
@@ -124,18 +125,28 @@
             <a
               v-if="menu"
               class="abouttexttitle linktext uppercase text-[3.5rem] text-[#131211]"
-              href="./"
+              :href="home.menutextlink2"
               target="_blank"
               rel="noopener noreferrer"
             >
               Store
             </a>
 
-            <p
+            <!-- <p
               class="presssectextlink mt-10 flex justify-center text-[3.5rem] text-[#131211] leading-[4.5rem]"
             >
-              Stay up to date
-            </p>
+              {{ home.menutext }}
+            </p> -->
+
+            <a
+              v-if="menu"
+              class="abouttexttitle mt-5 linktext uppercase text-[3.5rem] text-[#131211]"
+              :href="home.menutextlink"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+            {{ home.menutext }}
+            </a>
 
 
 
@@ -215,12 +226,31 @@
                     <!-- <Header /> -->
 
                     <div class="md:p-10 md:pb-0 p-0">
-                      <p
+                      <!-- <p
                       v-if="!menu"
                         class="abouttexttitle md:pt-20 pt-36 text-center uppercase md:text-[6rem] text-[4rem] md:leading-[5.5rem] leading-[2.5rem] pb-5"
                       >
                         Chisara Agor
-                      </p>
+                      </p> 
+                      
+                      md:pb-20-->
+
+                      <div
+              v-for="section in home.sections"
+              :key="section._key"
+              class=" md:flex hidden md:pt-0  abouttitle md:justify-center text-5xl md:text-6xl z-30"
+            >
+           
+                <MediaImage
+                  :size="section.image.size"
+                  :aspect="section.image.aspect"
+                  :src="section.title.image"
+                  v-if="section.title.image"
+                  class="contactimagemobile w-[20vw]"
+                  @click="startGlitchEffect"
+                ></MediaImage>
+              
+            </div>
 
                       <!-- press -->
                       <div
@@ -300,12 +330,12 @@
                       <!-- more links -->
                       <div
                         v-if="home.sections5"
-                        class="presssecmd text-center justify-center pb-20 md:pb-0 text-[1.7rem] leading-[1.7rem]  flex flex-col items-center md:flex-row"
+                        class="presssecmd text-center justify-center pb-20 md:pb-0 text-[1.7rem] leading-[1.7rem]  flex flex-col items-center "
                       >
                         <div
                           v-for="sections5 in home.sections5"
                           :key="sections5._key"
-                          class="md:p-5 presssecinnermd  md:pb-20"
+                          class="md:p-5 presssecinnermd  "
                         >
                           <div class="presssec">
                             <!-- <p
@@ -362,7 +392,7 @@
 
                       <p
                       v-if="!menu"
-                        class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5"
+                        class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5 pt-20"
                       >
                         About Chisara Agor
                       </p>
@@ -649,6 +679,7 @@ export default {
           title,
           subtitle,
           content,
+          "title" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
           "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
         }
       }

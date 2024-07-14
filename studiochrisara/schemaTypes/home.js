@@ -17,6 +17,21 @@ export default {
       type: 'string',
     },
     {
+      name: 'menutext',
+      title: 'Menu Socials text',
+      type: 'string',
+    },
+    {
+      name: 'menutextlink',
+      title: 'Menu Socials Link',
+      type: 'string',
+    },
+    {
+      name: 'menutextlink2',
+      title: 'Menu Store Link',
+      type: 'string',
+    },
+    {
       name: "sections4",
       title: "Home main image",
       type: "array",
@@ -72,10 +87,15 @@ export default {
           title: "Section",
           type: "object",
           fields: [
+            // {
+            //   name: "title",
+            //   title: "Title",
+            //   type: "string",
+            // },
             {
               name: "title",
-              title: "Title",
-              type: "string",
+              title: "Title Image",
+              type: "image",
             },
             // {
             //   name: "subtitle",
@@ -84,7 +104,7 @@ export default {
             // },
             {
               name: "image",
-              title: "About Image",
+              title: "Logo image",
               type: "image",
             },
             {
