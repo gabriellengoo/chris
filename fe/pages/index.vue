@@ -240,13 +240,13 @@
               :key="section._key"
               class=" md:flex hidden md:pt-0  abouttitle md:justify-center text-5xl md:text-6xl z-30"
             >
-           
+           <!--  :src="section.title.image"
+                  v-if="section.title.image" -->
                 <MediaImage
-                  :size="section.image.size"
-                  :aspect="section.image.aspect"
-                  :src="section.title.image"
-                  v-if="section.title.image"
-                  class="contactimagemobile w-[20vw]"
+               
+                  :src="section.title.title"
+                  v-if="section.title.title"
+                  class="contactimagemobile w-[40vw]"
                   @click="startGlitchEffect"
                 ></MediaImage>
               
@@ -679,7 +679,7 @@ export default {
           title,
           subtitle,
           content,
-          "title" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
+          "title" : {"title" : title.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
           "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
         }
       }

@@ -95,7 +95,7 @@ export default {
             {
               name: "title",
               title: "Title Image",
-              type: "image",
+              type: "image", 
             },
             // {
             //   name: "subtitle",
