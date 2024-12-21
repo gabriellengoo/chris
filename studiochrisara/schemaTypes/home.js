@@ -16,11 +16,17 @@ export default {
       title: 'Title',
       type: 'string',
     },
+        //chimail
     {
       name: 'menutext',
       title: 'Menu Socials text',
       type: 'string',
     },
+    {
+      name: "imagesoc",
+      title: "Menu Socials Image",
+      type: "image",
+    }, 
     {
       name: 'menutextlink',
       title: 'Menu Socials Link',
@@ -31,6 +37,11 @@ export default {
       title: 'Menu Store Link',
       type: 'string',
     },
+    {
+      name: "imagest",
+      title: "Menu Store Image",
+      type: "image",
+    }, 
     {
       name: "sections4",
       title: "Home main image",
@@ -180,6 +191,12 @@ export default {
               title: "Title",
               type: "string",
             },
+            {
+              name: "image5",
+              title: "Image button area",
+              type: "image",
+            },
+             
             {
               name: "content5",
               title: "Content",

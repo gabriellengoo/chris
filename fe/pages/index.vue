@@ -129,14 +129,14 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Store
+              <!-- Store -->
+              <MediaImage
+                  :src="home.imagest.asset._ref"
+                  v-if="home.imagest"
+                  class="w-[20vw] landingimg max-h-full object-cover"
+                ></MediaImage>
             </a>
 
-            <!-- <p
-              class="presssectextlink mt-10 flex justify-center text-[3.5rem] text-[#131211] leading-[4.5rem]"
-            >
-              {{ home.menutext }}
-            </p> -->
 
             <a
               v-if="menu"
@@ -145,7 +145,12 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-            {{ home.menutext }}
+            <!-- {{ home.menutext }} -->
+                 <MediaImage
+                  :src="home.imagesoc.asset._ref"
+                  v-if="home.imagesoc"
+                  class="w-[20vw] max-h-full object-cover"
+                ></MediaImage>
             </a>
 
 
@@ -329,28 +334,26 @@
 
                       <!-- more links -->
                       <div
-                        v-if="home.sections5"
+                        v-if="home && home.sections5"
                         class="presssecmd text-center justify-center pb-20 md:pb-0 text-[1.7rem] leading-[1.7rem]  flex flex-col items-center "
                       >
                         <div
-                          v-for="sections5 in home.sections5"
-                          :key="sections5._key"
+                          v-for="section in home.sections5"
+                          :key="section._key"
                           class="md:p-5 presssecinnermd  "
                         >
+                        <!-- <MediaImage
+                  :size="section.image5.size"
+                  :aspect="section.image5.aspect"
+                  :src="section.image5.image5"
+                  v-if="section.image5.image5"
+                  class="landingimg max-h-full object-cover"
+                ></MediaImage> -->
                           <div class="presssec">
-                            <!-- <p
-                              v-if="sections5.title5"
-                              class="presstitle md:pb-2 justify-start text-[3.5rem] leading-[4.5rem]"
-                            >
-                              <span>{{ sections5.title5 }}</span>
-                            </p>
-                            <Richtext
-                              class="presssectext uppercase md:pb-5 md:text-[6.5rem] text-[3rem] md:leading-[5.5rem] leading-[2.5rem]"
-                              :blocks="sections5.content5"
-                              v-if="sections5.content5"
-                            ></Richtext> -->
+                         
+                           
 
-                            <div v-if="sections5.title5">
+                            <div>
                               <div
                                 class="presssectextlink justify-start flex  md:contents"
                               >
@@ -358,34 +361,16 @@
                                   class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
                                   v-if="!menu"
                                 >
+                            
                                   <!-- WE ARE THE NEW HOPE -->
                                   <!-- {{ sections5.title5 }} -->
-                                  <Richtext
-                              class="p-5"
-                              :blocks="sections5.content5"
-                              v-if="sections5.content5 && !menu"
-                            ></Richtext>
+                                
                             </div>
                               </div>
-                              <!-- <div
-                                class="presssectextlink justify-start hidden md:contents"
-                              >
-                                <button
-                                  class="borderset presssectextlink text-[3.5rem] leading-[4.5rem]"
-                                  @click="transitionToPoems"
-                                >
-                                  PATREON SERIES
-                                </button>
-                              </div> -->
+                            
                             </div>
 
-                            <!-- <NuxtLink
-                        v-if="sections3.title3"
-                        to="/works"
-                        class="presssectextlink  justify-start text-[3.5rem] leading-[4.5rem] md:hidden contents"
-                      >
-                        <span class="borderset">view here</span>
-                      </NuxtLink> -->
+                           
                           </div>
                         </div>
                       </div>
@@ -714,6 +699,7 @@ export default {
         sections5[]{
           title5,
           content5,
+          "image5" : {"image5": image5.asset._ref, "aspect" : image5.asset->metadata.dimensions.aspectRatio, "position" : position}, 
         }
       }
 
