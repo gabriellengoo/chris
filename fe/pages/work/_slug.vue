@@ -905,6 +905,7 @@ display:contents;
   .projecttextarea {
     font-size: 1.7rem;
     line-height: 1.7rem;
+    padding: 2vw;
   }
 
   .text {

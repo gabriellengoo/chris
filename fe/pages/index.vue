@@ -333,48 +333,47 @@
                       <SeatedWidget />
 
                       <!-- more links -->
+                      
+
                       <div
                         v-if="home && home.sections5"
                         class="presssecmd text-center justify-center pb-20 md:pb-0 text-[1.7rem] leading-[1.7rem]  flex flex-col items-center "
                       >
-                        <div
-                          v-for="section in home.sections5"
-                          :key="section._key"
-                          class="md:p-5 presssecinnermd  "
-                        >
-                        <!-- <MediaImage
-                  :size="section.image5.size"
-                  :aspect="section.image5.aspect"
-                  :src="section.image5.image5"
-                  v-if="section.image5.image5"
-                  class="landingimg max-h-full object-cover"
+                  
+                      <!-- <MediaImage
+                  :src="home.imagesoc.asset._ref"
+                  v-if="!menu && home.imagesoc"
+                  class="w-[20vw] max-h-full object-cover"
                 ></MediaImage> -->
-                          <div class="presssec">
+                
+
+              <a :href="home.soclink2btn" target="_blank"
+              rel="noopener noreferrer">
+                <MediaImage
+                 :src="home.imagesocbtn.asset._ref"
+                 v-if="!menu && home.imagesocbtn"
+                 class="w-[20vw] landingimg max-h-full object-cover"
+               ></MediaImage>
+              </a>
+
+              <a :href="home.stlink2btn" target="_blank"
+              rel="noopener noreferrer">
+                <MediaImage
+                 :src="home.imagestbtn.asset._ref"
+                 v-if="!menu && home.imagestbtn"
+                 class="w-[20vw] landingimg max-h-full object-cover"
+               ></MediaImage>
+              </a>
+                
+                          <!-- <div class="presssec">
                          
-                           
-
-                            <div>
-                              <div
-                                class="presssectextlink justify-start flex  md:contents"
-                              >
-                                <div
-                                  class="borderset presssectextlink text-[2.5rem] leading-[2.5rem]"
-                                  v-if="!menu"
-                                >
-                            
-                                  <!-- WE ARE THE NEW HOPE -->
-                                  <!-- {{ sections5.title5 }} -->
-                                
-                            </div>
-                              </div>
-                            
-                            </div>
-
-                           
-                          </div>
-                        </div>
+                      
+                        </div> -->
                       </div>
 
+
+                     
+                
                       <p
                       v-if="!menu"
                         class="abouttexttitle text-center uppercase text-[1.5rem] leading-[1.5rem] pb-5 pt-20"

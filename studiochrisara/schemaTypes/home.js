@@ -42,6 +42,30 @@ export default {
       title: "Menu Store Image",
       type: "image",
     }, 
+
+    // buttons
+    {
+      name: 'stlink2btn',
+      title: 'Image button area Link 1',
+      type: 'string',
+    },
+    {
+      name: "imagestbtn",
+      title: "Image button area 1",
+      type: "image",
+    }, 
+    {
+      name: 'soclink2btn',
+      title: 'Image button area Link 2',
+      type: 'string',
+    },
+    {
+      name: "imagesocbtn",
+      title: "Image button area Image 2",
+      type: "image",
+    }, 
+    // buttons
+
     {
       name: "sections4",
       title: "Home main image",
