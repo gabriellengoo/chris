@@ -52,7 +52,7 @@
       <div class="w-[100vw] md:h-screen h-auto">
        
         <button
-          class="z-50 top-[2vh] fixed md:left-[45vw] md:right-0 right-[15px] text-[white]"
+          class="z-50 top-[2vh] fixed md:left-[45vw] md:right-0 right-[15px] text-[white] mbham"
           @click="TOGGLE_MENU()"
         >
           <!-- Hamburger Icon -->
@@ -125,16 +125,17 @@
             <a
               v-if="menu"
               class="abouttexttitle linktext uppercase text-[3.5rem] text-[#131211]"
-              :href="home.menutextlink2"
+              :href="home.lmenutextlink2"
               target="_blank"
               rel="noopener noreferrer"
             >
+            {{ home.lmenutext }}
               <!-- Store -->
-              <MediaImage
+              <!-- <MediaImage
                   :src="home.imagest.asset._ref"
                   v-if="home.imagest"
                   class="w-[20vw] landingimg max-h-full object-cover"
-                ></MediaImage>
+                ></MediaImage> -->
             </a>
 
 
@@ -149,7 +150,7 @@
                  <MediaImage
                   :src="home.imagesoc.asset._ref"
                   v-if="home.imagesoc"
-                  class="w-[20vw] max-h-full object-cover"
+                  class="w-[20vw] mbimgv max-h-full object-cover"
                 ></MediaImage>
             </a>
 
@@ -352,7 +353,7 @@
                 <MediaImage
                  :src="home.imagesocbtn.asset._ref"
                  v-if="!menu && home.imagesocbtn"
-                 class="w-[20vw] landingimg max-h-full object-cover"
+                 class="w-[20vw] mbimgv landingimg max-h-full object-cover"
                ></MediaImage>
               </a>
 
@@ -361,7 +362,7 @@
                 <MediaImage
                  :src="home.imagestbtn.asset._ref"
                  v-if="!menu && home.imagestbtn"
-                 class="w-[20vw] landingimg max-h-full object-cover"
+                 class="w-[20vw] mbimgv landingimg max-h-full object-cover"
                ></MediaImage>
               </a>
                 
@@ -1211,6 +1212,14 @@ export default {
     flex-direction: row; */
 
 @media (max-width: 768px) {
+  .mbham{
+    mix-blend-mode: exclusion;
+  }
+
+.mbimgv{
+  width: 45vw;
+}
+
   .contactsecall {
     display: flex;
     flex-direction: column;
