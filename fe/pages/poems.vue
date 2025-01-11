@@ -67,11 +67,11 @@
                   v-if="section.content"
                 ></Richtext>
 
-                <Richtext
+                <!-- <Richtext
                   class="abtextmb text-center contents md:hidden md:p-10 md:text-[1.5rem] md:leading-[1.5rem] text-[2rem] leading-[normal]"
                   :blocks="section.content"
                   v-if="section.content"
-                ></Richtext>
+                ></Richtext> -->
               </div>
             </div>
           </div>
@@ -262,5 +262,14 @@ export default {
   /* display: block; */
 }
 
+.abtextmb{
+    display: none;
+  }
+
+@media (max-width: 768px) {
+  .abtextmb{
+    display: block;
+  }
+}
 /* Add any additional styles here */
 </style>
