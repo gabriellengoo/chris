@@ -1,5 +1,16 @@
 # frontend
 
+## Runtime and Vercel
+
+Use Node.js 24 (`nvm use` in this directory). `package.json` pins the Vercel
+runtime to `24.x`; do not install Node or npm as application dependencies.
+
+In Vercel, set **Root Directory** to `fe` and **Node.js Version** to `24.x`.
+For this static Nuxt 2 site, use **Build Command** `npm run generate` and
+**Output Directory** `dist`. Use `npm ci` to install the locked dependencies.
+The project `.npmrc` preserves the existing Swiper dependency combination with
+`legacy-peer-deps=true`; keep that setting for local and Vercel installs.
+
 ## Build Setup
 
 ```bash
